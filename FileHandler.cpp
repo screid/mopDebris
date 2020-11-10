@@ -106,7 +106,7 @@ ProblemInstance* FileHandler::readInputFile(){
     temp->setPrefDia(atoi(read.c_str()));
   }
 
-  /*
+/* sami
   //Matriz distancia :c (desde el deposito hasta los nodos)
   for (int i = 0; i < n_nodos; i++){
     this->fs >> this->read >> this->read2 >> this->read3;
@@ -123,6 +123,39 @@ ProblemInstance* FileHandler::readInputFile(){
     pi->setHaciaDeposito(atof(read3.c_str()));
   }
 */
+
+/* franco
+  //Matriz de distancia
+  for (int i= 0; i < n_nodos; i++){
+    this->fs >> this->read;
+
+    pi->setIda(atof(read.c_str()));
+  }
+
+  for (int i= 0; i < n_nodos; i++){
+    this->fs >> this->read;
+
+    pi->setRegreso(atof(read.c_str()));
+  }
+*/
+
+  //distancia deposito - nodo
+  for (int i= 1; i < n_nodos; i++){
+    this->fs >> this->read;
+
+    Node* temp = pi->getUnNodo(i);
+    temp->setDesdeD(atof(read.c_str()));
+  }
+
+  //distancia nodo - deposito
+  for (int i= 1; i < n_nodos; i++){
+    this->fs >> this->read;
+
+    Node* temp = pi->getUnNodo(i);
+    temp->setHastaD(atof(read.c_str()));
+  }
+
+
   return pi;
 
 }

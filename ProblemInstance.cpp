@@ -151,7 +151,7 @@ float ProblemInstance::getTiempoMaxTrabajo(void){
   return this->TiempoMaxTrabajo;
 }
 
-//Matriz distancias
+/* sami
 void ProblemInstance::setDesdeDeposito(float distancia){
   this->DesdeDeposito.push_back(distancia);
 }
@@ -183,6 +183,24 @@ float ProblemInstance::getHaciaDeposito(long int idnodo){
   }
   return this->HastaDeposito.at(aux);
 }
+*/
+
+/* franco
+//Matriz distancias
+void ProblemInstance::setIda(float distancia){
+  this->Ida.push_back(distancia);
+}
+void ProblemInstance::setRegreso(float distancia){
+  this->Regreso.push_back(distancia);
+}
+
+float ProblemInstance::getIda(int indice){
+  return this->Ida.at(indice);
+}
+float ProblemInstance::getRegreso(int indice){
+  return this->Regreso.at(indice);
+}
+*/
 
 
 int ProblemInstance::generarNAleat(int min,int max){
@@ -220,8 +238,16 @@ void ProblemInstance::imprimirProblemInstance(void){
     i->imprimirVuelta();
   } cout << endl;
 
+/* sami
   for (Node* i: this->Nodos){
     cout << getDesdeDeposito(i->getIDnodo()) << "\t" << getHaciaDeposito(i->getIDnodo())<< endl; 
   }
+*/
+
+/* franco
+  for (int i ; i < this->Ida.size() ; i++){
+    cout << getIda(i) << "  \t" << getRegreso(i) << endl; 
+  }
+*/
 
 }

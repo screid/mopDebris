@@ -12,6 +12,16 @@ void Node::setPrefNodo(int PrefNodo){
   this->PrefNodo = PrefNodo;
 }
 
+//#########
+void Node::setDesdeD(float distancia){
+  this->DesdeD = distancia;
+}
+
+void Node::setHastaD(float distancia){
+  this->HastaD = distancia;
+}
+//#########
+
 long int Node::getIDnodo(void){
   return this->IDnodo;
 }
@@ -24,10 +34,25 @@ int Node::getPrefNodo(void){
   return this->PrefNodo;
 }
 
+//#########
+float Node::getDesdeD(void){
+  return this->DesdeD;
+}
+float Node::getHastaD(void){
+  return this->HastaD;
+}
+//#########
+
 void Node::imprimirNodo(void){
   cout << "ID:" << this->IDnodo << endl;
   cout << "Cant Esc:" << this->CantEsc << endl;
   cout << "Pref Nodo:" << this->PrefNodo << endl;
+  
+  //#########
+  cout << "Dist Desde D. :" << this->DesdeD << endl;
+  cout << "Dist Hasta D. :" << this->HastaD << endl;
+  cout << " " << endl;
+  //#########
 }
 
 

@@ -30,8 +30,15 @@ class ProblemInstance{
     float TiempoMaxTrabajo;
 
     //Matriz Distancias <--- Falta esa!! 
+    /* sami
     vector <float> DesdeDeposito;
     vector <float> HastaDeposito;
+    */
+
+    /* franco
+    vector <float> Ida;
+    vector <float> Regreso;
+    */
 
   public:
 
@@ -78,11 +85,21 @@ class ProblemInstance{
     float getTiempoRetiroEsc(void);
     float getTiempoMaxTrabajo(void);
 
+/* sami
     void setDesdeDeposito(float);
     void setHaciaDeposito(float);
     
     float getDesdeDeposito(long int idnodo);
     float getHaciaDeposito(long int idnodo);
+*/
+
+/* franco
+    void setIda(float);
+    void setRegreso(float);
+
+    float getIda(int indice);
+    float getRegreso(int indice);
+*/
 
     //Función para generar el número de la semilla
     int generarNAleat(int,int);
