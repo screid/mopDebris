@@ -19,11 +19,8 @@ class Node{
     Node(){
       CantEsc = 0;
       PrefNodo = 0;
-
-      //#########
       DesdeD = 0;
       HastaD = 0;
-      //#########
 
     };    //Constructor
     ~Node(){};   //Destructor
@@ -31,23 +28,17 @@ class Node{
     void setIDnodo(long int IDnodo);
     void setCantEsc(float CantEsc);
     void setPrefNodo(int PrefNodo);
-    
-    //#########
     void setDesdeD(float distancia);
     void setHastaD(float distancia);
-    //#########
-
+    
     long int getIDnodo(void);
     float getCantEsc(void);
     int getPrefNodo(void);
-
-    //#########
     float getDesdeD(void);
     float getHastaD(void);
-    //#########
 
     void imprimirNodo(void);
 };
 
-
+bool OrdenarPref(const Node* n1, const Node* n2);
 

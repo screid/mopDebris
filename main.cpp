@@ -3,8 +3,10 @@
 #include <vector>
 #include <time.h>
 
-#include "ProblemInstance.h"
 #include "FileHandler.h"
+#include "ProblemInstance.h"
+#include "Solution.h"
+#include "Construction.h"
 
 using namespace std;
 
@@ -30,6 +32,14 @@ int main(int argc, char **argv) {
   ProblemInstance* pi = fh.readInputFile();
 
   //Método para imprimir todo resumido y bonito
-  pi-> imprimirProblemInstance();
+  //pi-> imprimirProblemInstance();
 
+
+
+  Solution* solucion = new Solution(pi) ;
+  Construction* construccion = new Construction();
+
+  construccion->ConstruirSolucionFact(solucion);
+
+  solucion->ImprimirSolucion();
 }

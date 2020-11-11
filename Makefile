@@ -1,5 +1,5 @@
 #Aquí se agregan los objetos para compilar
-OBJS = main.o Truck.o Node.o Day.o Round.o ProblemInstance.o FileHandler.o
+OBJS = main.o Truck.o Node.o Day.o Round.o ProblemInstance.o FileHandler.o Solution.o Construction.o
 #Para poner opciones de la versión de C++ a ocupar 
 FLAGS = -O3
 
