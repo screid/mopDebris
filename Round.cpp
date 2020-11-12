@@ -1,7 +1,8 @@
 #include "Round.h"
 
-Round::Round(int IDVuelta, float CargaRecogida, float TiempoVuelta, Truck* NombreCamion, Day* DiaVuelta){
+Round::Round(int IDVuelta, long int IDNodo, float CargaRecogida, float TiempoVuelta, Truck* NombreCamion, Day* DiaVuelta){
   this->IDVuelta = IDVuelta;
+  this->IDNodo = IDNodo;
   this->CargaRecogida = CargaRecogida;
   this->TiempoVuelta = TiempoVuelta;
   this->NombreCamion = NombreCamion;
@@ -17,11 +18,13 @@ int Round::getIDVuelta(void){
 }
 
 void Round::imprimirVuelta(void){
-  cout << "Vuelta:" << this->IDVuelta << endl;
-  cout << "Carga:" << this->CargaRecogida << endl;
-  cout << "Tiempo" << this->TiempoVuelta << endl;
-  cout << "Camion" << this->NombreCamion->getIDCamion() << endl;
-  cout << "Dia" << this->DiaVuelta->getIDDia() << endl;
+  cout << "---------------^~^----------------" << endl;
+  cout << "Vuelta: " << this->IDVuelta << endl;
+  cout << "Nodo: " << this->IDNodo << endl;
+  cout << "Carga: " << this->CargaRecogida << endl;
+  cout << "Tiempo: " << this->TiempoVuelta << endl;
+  cout << "Camión: " << this->NombreCamion->getIDCamion() << endl;
+  cout << "Día: " << this->DiaVuelta->getIDDia() << endl;
   cout << "---------------^~^----------------" << endl;
 }
 

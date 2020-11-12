@@ -32,7 +32,7 @@ int main(int argc, char **argv) {
   ProblemInstance* pi = fh.readInputFile();
 
   //Método para imprimir todo resumido y bonito
-  //pi-> imprimirProblemInstance();
+  pi-> imprimirProblemInstance();
 
 
 

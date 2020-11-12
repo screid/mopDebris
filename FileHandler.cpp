@@ -50,12 +50,12 @@ ProblemInstance* FileHandler::readInputFile(){
   int n_vueltas = atoi(linea.c_str());
   pi->setCantVueltas(n_vueltas);
 
-  //Le asigno ID a las vueltas 
-  for (int i = 0; i < n_vueltas; i++){
-    Round* temp = new Round();
-    temp->setIDVuelta(i);
-    pi->agregarVuelta(temp);
-  }
+//   //Le asigno ID a las vueltas 
+//   for (int i = 0; i < n_vueltas; i++){
+//     Round* temp = new Round();
+//     temp->setIDVuelta(i);
+//     pi->agregarVuelta(temp);
+//   }
 
   //Se corre una linea
   getline(this->fs,linea);

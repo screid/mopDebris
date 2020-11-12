@@ -10,6 +10,7 @@ using namespace std;
 class Round{
   private:
     int IDVuelta;
+    long int IDNodo;
     float CargaRecogida;
     float TiempoVuelta;
     Truck* NombreCamion;
@@ -17,7 +18,7 @@ class Round{
 
   public:
 
-    Round(int IDVuelta, float CargaRecogida, float TiempoVuelta, Truck* NombreCamion, Day* DiaVuelta);
+    Round(int IDVuelta, long int IDNodo, float CargaRecogida, float TiempoVuelta, Truck* NombreCamion, Day* DiaVuelta);
     ~Round(){};
 
     void setIDVuelta(int IDVuelta);
