@@ -56,6 +56,6 @@ void Node::imprimirNodo(void){
 }
 
 bool OrdenarPref(const Node* n1, const Node* n2){
-  return ((Node*)n1)->getPrefNodo() < ((Node*)n2)->getPrefNodo() ;
+  return ((Node*)n1)->getPrefNodo() > ((Node*)n2)->getPrefNodo() ;
 }
 

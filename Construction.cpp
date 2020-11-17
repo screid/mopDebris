@@ -13,7 +13,10 @@ float Minimo(float a, float b){
 
 
 bool Construction::ConstruirSolucionFact(Solution *sol){
-  bool debug = true;
+  bool debug = false;
+
+  //variables para guardar funciones objetivos
+  float F1 = 0.0 ; float F2 = 0.0 ;
 
   //Se copia al vector de nodos
   vector <Node*> ListaNodos = sol->getpi()->getTodosNodos() ;
@@ -49,14 +52,16 @@ bool Construction::ConstruirSolucionFact(Solution *sol){
         
         
         //Si el tiempo disponible es mayor a lo que se va a ocupar
-        if (debug) cout << "Tiempo de viaje al nodo: " << (temp->getDesdeD() + temp->getHastaD()) * sol->getpi()->getVelocidad()  << endl;
+        if (debug) cout << "Tiempo de viaje al nodo: " << (temp->getDesdeD() + temp->getHastaD()) / sol->getpi()->getVelocidad()  << endl;
         
-        if (Tdisponible > (temp->getDesdeD() + temp->getHastaD()) * sol->getpi()->getVelocidad() ){
+        if (Tdisponible > (temp->getDesdeD() + temp->getHastaD()) / sol->getpi()->getVelocidad() ){
           if (debug) cout << "Tdisponible alcanza para ir y volver! " << endl;
           //Se calcula la carga factible del nodo ( t. disponible - tiempo transitado)/t. retiro )
-          float CargaFactible = ( Tdisponible - (temp->getDesdeD() + temp->getHastaD()) * sol->getpi()->getVelocidad()) / sol->getpi()->getTiempoRetiroEsc() ;
-
+          float CargaFactible = ( Tdisponible - ((temp->getDesdeD() + temp->getHastaD()) / sol->getpi()->getVelocidad())) * sol->getpi()->getTiempoRetiroEsc() ;
+          
+          //cout << Tdisponible << "-" << ((temp->getDesdeD() + temp->getHastaD()) / sol->getpi()->getVelocidad()) << "*" << sol->getpi()->getTiempoRetiroEsc() << endl ;
           //Se saca el minimo entre el tiempo disponible de camión y capacidad del camión)
+          //cout << CargaFactible << endl ;
           CargaFactible = Minimo(CargaFactible, sol->getpi()->getCapacidad());
           if (debug) cout << "El camión puede recoger:  " << CargaFactible << endl;
           
@@ -65,9 +70,10 @@ bool Construction::ConstruirSolucionFact(Solution *sol){
           if (debug) cout << "De acuerdo al camión y al nodo, se puede recoger:  " << tempCarga << endl;
           
           //Tiempo total de una vuelta (t. retiro escombros + t. desplazamiento)
-          float Tvuelta = (temp->getDesdeD() + temp->getHastaD()) * sol->getpi()->getVelocidad() + tempCarga * sol->getpi()->getTiempoRetiroEsc();
+          float Tvuelta = (temp->getDesdeD() + temp->getHastaD()) / sol->getpi()->getVelocidad() + tempCarga / sol->getpi()->getTiempoRetiroEsc();
           if (debug) cout << "Tvuelta: " << Tvuelta << endl;
           
+          F2 = tempCarga * sol->getpi()->getUnDia(d)->getPrefDia() ;
           
           //Se construye una vuelta
           Round* tempVuelta = new Round(contV, temp->getIDnodo(), tempCarga, Tvuelta, sol->getpi()->getUnCamion(k), sol->getpi()->getUnDia(d)) ;
@@ -85,18 +91,23 @@ bool Construction::ConstruirSolucionFact(Solution *sol){
 
           //Si ya no quedan escombros disponibles, paso al siguiente nodo
           if (EscDisponible == 0){
+                F1 += temp->getPrefNodo() * sol->getpi()->getUnDia(d)->getPrefDia() ;
                 if (debug) cout << " --->Se acabaron los escombros en el nodo" << endl;
                 it++ ;
-                if(it == ListaNodos.end()) //Cuando ya no quedan nodos
+                if(it == ListaNodos.end()){ //Cuando ya no quedan nodos
+                    sol->setF1(F1);
+                    sol->setF2(F2);
                     return true;
+                }
                 Node* temp = (*it); 
                 EscDisponible = temp->getCantEsc();
                 if (debug) temp->imprimirNodo();
                 if (debug) getchar();
-                
           }
-          if (Tdisponible == 0)
+          if (Tdisponible == 0){
+              contV++ ;
               break;
+          }
           if (debug) getchar();
           //Se aumeta el contador de las vueltas
           contV++ ;
@@ -108,4 +119,6 @@ bool Construction::ConstruirSolucionFact(Solution *sol){
       }
     }
   }
+  sol->setF1(F1);
+  sol->setF2(F2);
 }
