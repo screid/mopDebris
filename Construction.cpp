@@ -16,7 +16,8 @@ bool Construction::ConstruirSolucionFact(Solution *sol){
   bool debug = false;
 
   //variables para guardar funciones objetivos
-  float F1 = 0.0 ; float F2 = 0.0 ;
+  float F1 = 0.0;
+  float F2 = 0.0;
 
   //Se copia al vector de nodos
   vector <Node*> ListaNodos = sol->getpi()->getTodosNodos() ;
@@ -73,7 +74,8 @@ bool Construction::ConstruirSolucionFact(Solution *sol){
           float Tvuelta = (temp->getDesdeD() + temp->getHastaD()) / sol->getpi()->getVelocidad() + tempCarga / sol->getpi()->getTiempoRetiroEsc();
           if (debug) cout << "Tvuelta: " << Tvuelta << endl;
           
-          F2 = tempCarga * sol->getpi()->getUnDia(d)->getPrefDia() ;
+          F2 += tempCarga * sol->getpi()->getUnDia(d)->getPrefDia() ;
+          if (debug) cout << "F2: " << F2 << endl;
           
           //Se construye una vuelta
           Round* tempVuelta = new Round(contV, temp->getIDnodo(), tempCarga, Tvuelta, sol->getpi()->getUnCamion(k), sol->getpi()->getUnDia(d)) ;
@@ -92,6 +94,8 @@ bool Construction::ConstruirSolucionFact(Solution *sol){
           //Si ya no quedan escombros disponibles, paso al siguiente nodo
           if (EscDisponible == 0){
                 F1 += temp->getPrefNodo() * sol->getpi()->getUnDia(d)->getPrefDia() ;
+                if (debug) cout << "F1: " << F1 << endl;
+                
                 if (debug) cout << " --->Se acabaron los escombros en el nodo" << endl;
                 it++ ;
                 if(it == ListaNodos.end()){ //Cuando ya no quedan nodos

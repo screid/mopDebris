@@ -95,7 +95,7 @@ ProblemInstance* FileHandler::readInputFile(){
     this->fs >> this->read;
 
     Node* temp = pi->getUnNodo(i);
-    temp->setPrefNodo(atoi(read.c_str()));
+    temp->setPrefNodo(atof(read.c_str()));
   }
 
   //Preferencia de cada dia
@@ -103,7 +103,7 @@ ProblemInstance* FileHandler::readInputFile(){
     this->fs >> this->read;
 
     Day* temp = pi->getUnDia(i);
-    temp->setPrefDia(atoi(read.c_str()));
+    temp->setPrefDia(atof(read.c_str()));
   }
 
 /* sami
