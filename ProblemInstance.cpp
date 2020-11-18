@@ -151,6 +151,19 @@ float ProblemInstance::getTiempoMaxTrabajo(void){
   return this->TiempoMaxTrabajo;
 }
 
+
+
+void ProblemInstance::setDeposito(Node* dep){
+  this->Deposito = dep;
+}
+
+Node* ProblemInstance::getDeposito(void){
+  return this->Deposito;
+}
+
+
+
+
 /* sami
 void ProblemInstance::setDesdeDeposito(float distancia){
   this->DesdeDeposito.push_back(distancia);
@@ -225,6 +238,9 @@ void ProblemInstance::imprimirProblemInstance(void){
   for (Truck* i: this->Camiones){
     i->imprimirCamion();
   } cout << endl;
+
+  cout << "Deposito" << endl ;
+  this->getDeposito()->imprimirNodo();
 
   for (Node* i: this->Nodos){
     i->imprimirNodo();

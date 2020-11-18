@@ -76,8 +76,12 @@ ProblemInstance* FileHandler::readInputFile(){
   //Para asignar ID a cada uno
   for (int i= 0; i < n_nodos; i++){
     this->fs >> this->read;
-
     Node* temp = new Node();
+    
+    if (i == 0){
+      pi->setDeposito(temp);
+    }
+
     temp->setIDnodo(stol(read.c_str()));
     pi->agregarNodo(temp);
   }
@@ -87,7 +91,7 @@ ProblemInstance* FileHandler::readInputFile(){
     this->fs >> this->read;
 
     Node* temp = pi->getUnNodo(i);
-    temp->setCantEsc(atoi(read.c_str()));
+    temp->setCantEsc(atof(read.c_str()));
   }
 
   //Preferencia para cada nodo

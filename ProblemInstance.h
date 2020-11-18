@@ -16,6 +16,7 @@ class ProblemInstance{
     vector <Node*> Nodos;
     vector <Day*> Dias;
     vector <Round*> Vueltas;
+    Node* Deposito;
 
     //int CantFO default 2
 
@@ -84,6 +85,9 @@ class ProblemInstance{
     float getVelocidad(void);
     float getTiempoRetiroEsc(void);
     float getTiempoMaxTrabajo(void);
+
+    void setDeposito(Node*);
+    Node* getDeposito(void);
 
 /* sami
     void setDesdeDeposito(float);

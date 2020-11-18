@@ -18,6 +18,8 @@ bool Construction::ConstruirSolucionFact(Solution *sol){
   //variables para guardar funciones objetivos
   float F1 = 0.0;
   float F2 = 0.0;
+  int F3 = 0;
+  int F4 = 0;
 
   //Se copia al vector de nodos
   vector <Node*> ListaNodos = sol->getpi()->getTodosNodos() ;
@@ -28,9 +30,13 @@ bool Construction::ConstruirSolucionFact(Solution *sol){
   sol->getpi()->imprimirProblemInstance();
   
   //partimos desde el nodo con mayor preferencia
-
-  vector<Node *>::iterator it = ListaNodos.begin() + 1; // Descartar el depósito.  
+  vector<Node *>::iterator it = ListaNodos.begin(); // Descartar el depósito.  
   Node* temp = (*it); 
+
+  if (temp == sol->getpi()->getDeposito()){
+    it++;
+    temp = (*it);
+  }
   
   if (debug) temp->imprimirNodo();
   if (debug) getchar();
@@ -94,6 +100,8 @@ bool Construction::ConstruirSolucionFact(Solution *sol){
           //Si ya no quedan escombros disponibles, paso al siguiente nodo
           if (EscDisponible == 0){
                 F1 += temp->getPrefNodo() * sol->getpi()->getUnDia(d)->getPrefDia() ;
+                F3++ ;
+                F4 += temp->getPrefNodo();
                 if (debug) cout << "F1: " << F1 << endl;
                 
                 if (debug) cout << " --->Se acabaron los escombros en el nodo" << endl;
@@ -101,9 +109,15 @@ bool Construction::ConstruirSolucionFact(Solution *sol){
                 if(it == ListaNodos.end()){ //Cuando ya no quedan nodos
                     sol->setF1(F1);
                     sol->setF2(F2);
+                    sol->setF3(F3);
+                    sol->setF4(F4);
                     return true;
                 }
-                Node* temp = (*it); 
+                temp = (*it);
+                if (temp == sol->getpi()->getDeposito()){
+                  it++;
+                  temp = (*it);
+                } 
                 EscDisponible = temp->getCantEsc();
                 if (debug) temp->imprimirNodo();
                 if (debug) getchar();
@@ -125,4 +139,6 @@ bool Construction::ConstruirSolucionFact(Solution *sol){
   }
   sol->setF1(F1);
   sol->setF2(F2);
+  sol->setF3(F3);
+  sol->setF4(F4);
 }

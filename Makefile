@@ -19,7 +19,7 @@ MOPDebris: $(OBJS)
 # nombreAlgoritmo nombreArchivo semilla itExt itInt
 
 exe:
-	./MOPDebris Instancias/instancia2.txt 10
+	./MOPDebris Instancias/instancia4.txt 10
   
 clean: 
 	rm -rf *.o MOPDebris
