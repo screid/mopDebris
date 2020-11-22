@@ -1,0 +1,1393 @@
+Gurobi 9.0.2: optimal solution; objective 135.5018461
+234681 simplex iterations
+22037 branch-and-cut nodes
+plus 358 simplex iterations for intbasis
+
+#################################
+#################################
+Minimizar: 1 
+#################################
+#################################
+
+F [*] :=
+1  135.502
+2    0
+;
+
+Vuelta: 0
+Nodo: 6001000200
+Carga: 20
+Tiempo: 100.96
+Camion: 0
+Dia: 0
+
+Vuelta: 1
+Nodo: 6001000200
+Carga: 20
+Tiempo: 100.96
+Camion: 1
+Dia: 0
+
+Vuelta: 2
+Nodo: 6001000202
+Carga: 18
+Tiempo: 99.04
+Camion: 0
+Dia: 0
+
+Vuelta: 3
+Nodo: 6001000202
+Carga: 18
+Tiempo: 99.04
+Camion: 1
+Dia: 0
+
+Vuelta: 4
+Nodo: 6001000196
+Carga: 10.06
+Tiempo: 96.52
+Camion: 0
+Dia: 1
+
+Vuelta: 5
+Nodo: 6001000196
+Carga: 20
+Tiempo: 103.48
+Camion: 0
+Dia: 1
+
+Vuelta: 6
+Nodo: 6001000196
+Carga: 20
+Tiempo: 103.48
+Camion: 1
+Dia: 1
+
+Vuelta: 7
+Nodo: 6001000203
+Carga: 15.09
+Tiempo: 96.52
+Camion: 1
+Dia: 1
+
+Vuelta: 8
+Nodo: 6001000200
+Carga: 3.59
+Tiempo: 89.47
+Camion: 0
+Dia: 2
+
+Vuelta: 9
+Nodo: 6001000201
+Carga: 18.24
+Tiempo: 110.53
+Camion: 0
+Dia: 2
+
+Vuelta: 10
+Nodo: 6001000202
+Carga: 8.66
+Tiempo: 92.5
+Camion: 1
+Dia: 2
+
+Vuelta: 11
+Nodo: 6001000204
+Carga: 17.73
+Tiempo: 106.45
+Camion: 1
+Dia: 2
+
+Objetivo 1: 	 135.50184614254783
+Objetivo 2: 	 0
+Completos: 	 0
+Preferencia: 	 0
+
+
+
+Gurobi 9.0.2: optimal solution; objective 12
+100805 simplex iterations
+1927 branch-and-cut nodes
+plus 132 simplex iterations for intbasis
+
+#################################
+#################################
+Minimizar: 2 
+#################################
+#################################
+
+F [*] :=
+1  100.345
+2   12
+;
+
+Vuelta: 0
+Nodo: 6001000198
+Carga: 15.13
+Tiempo: 117.83
+Camion: 0
+Dia: 0
+
+Vuelta: 1
+Nodo: 6001000200
+Carga: 9.42
+Tiempo: 93.55
+Camion: 1
+Dia: 0
+
+Vuelta: 2
+Nodo: 6001000204
+Carga: 17.73
+Tiempo: 106.45
+Camion: 1
+Dia: 0
+
+Vuelta: 3
+Nodo: 6001000199
+Carga: 6.34
+Tiempo: 103.12
+Camion: 0
+Dia: 1
+
+Vuelta: 4
+Nodo: 6001000200
+Carga: 14.18
+Tiempo: 96.88
+Camion: 0
+Dia: 1
+
+Vuelta: 5
+Nodo: 6001000200
+Carga: 20
+Tiempo: 100.96
+Camion: 1
+Dia: 1
+
+Vuelta: 6
+Nodo: 6001000203
+Carga: 17.27
+Tiempo: 98.05
+Camion: 1
+Dia: 1
+
+Vuelta: 7
+Nodo: 6001000199
+Carga: 14
+Tiempo: 108.48
+Camion: 1
+Dia: 2
+
+Vuelta: 8
+Nodo: 6001000202
+Carga: 17.4
+Tiempo: 98.62
+Camion: 0
+Dia: 2
+
+Vuelta: 9
+Nodo: 6001000202
+Carga: 20
+Tiempo: 100.44
+Camion: 0
+Dia: 2
+
+Vuelta: 10
+Nodo: 6001000202
+Carga: 7.26
+Tiempo: 91.52
+Camion: 1
+Dia: 2
+
+Objetivo 1: 	 100.34541666666671
+Objetivo 2: 	 12
+Completos: 	 4
+Preferencia: 	 12
+
+
+
+:     MV        PV    completos1 preferencia1 TCPU1    :=
+1   135.502   100.345      0            0        4
+2    12         0          4           12        2
+;
+
+
+
+Gurobi 9.0.2: optimal solution; objective 0.9999910019
+134684 simplex iterations
+2685 branch-and-cut nodes
+plus 124 simplex iterations for intbasis
+2 integer variables rounded to integers; maxerr = 4.95569e-07
+
+#################################
+#################################
+Ejecucion: 1 
+#################################
+#################################
+
+F [*] :=
+1  103.721
+2   12
+;
+
+103.72 12.00 
+Vuelta: 0
+Nodo: 6001000198
+Carga: 15.13
+Tiempo: 117.83
+Camion: 1
+Dia: 0
+
+Vuelta: 1
+Nodo: 6001000200
+Carga: 20
+Tiempo: 100.96
+Camion: 0
+Dia: 0
+
+Vuelta: 2
+Nodo: 6001000203
+Carga: 17.27
+Tiempo: 98.05
+Camion: 0
+Dia: 0
+
+Vuelta: 3
+Nodo: 6001000199
+Carga: 6.34
+Tiempo: 103.12
+Camion: 1
+Dia: 1
+
+Vuelta: 4
+Nodo: 6001000200
+Carga: 9.42
+Tiempo: 93.55
+Camion: 0
+Dia: 1
+
+Vuelta: 5
+Nodo: 6001000200
+Carga: 14.18
+Tiempo: 96.88
+Camion: 1
+Dia: 1
+
+Vuelta: 6
+Nodo: 6001000204
+Carga: 17.73
+Tiempo: 106.45
+Camion: 0
+Dia: 1
+
+Vuelta: 7
+Nodo: 6001000199
+Carga: 14
+Tiempo: 108.48
+Camion: 0
+Dia: 2
+
+Vuelta: 8
+Nodo: 6001000202
+Carga: 5.92
+Tiempo: 90.58
+Camion: 0
+Dia: 2
+
+Vuelta: 9
+Nodo: 6001000202
+Carga: 18.74
+Tiempo: 99.56
+Camion: 1
+Dia: 2
+
+Vuelta: 10
+Nodo: 6001000202
+Carga: 20
+Tiempo: 100.44
+Camion: 1
+Dia: 2
+
+Objetivo 1: 	 103.7209226190476
+Objetivo 2: 	 12.000000500747289
+Completos: 	 4
+Preferencia: 	 12
+
+
+Gurobi 9.0.2: optimal solution; objective 0.9096013901
+76087 simplex iterations
+1650 branch-and-cut nodes
+plus 373 simplex iterations for intbasis
+
+#################################
+#################################
+Ejecucion: 2 
+#################################
+#################################
+
+F [*] :=
+1  103.721
+2   12
+;
+
+103.72 12.00 
+Vuelta: 0
+Nodo: 6001000198
+Carga: 15.13
+Tiempo: 117.83
+Camion: 0
+Dia: 0
+
+Vuelta: 1
+Nodo: 6001000200
+Carga: 20
+Tiempo: 100.96
+Camion: 1
+Dia: 0
+
+Vuelta: 2
+Nodo: 6001000203
+Carga: 17.27
+Tiempo: 98.05
+Camion: 1
+Dia: 0
+
+Vuelta: 3
+Nodo: 6001000199
+Carga: 6.34
+Tiempo: 103.12
+Camion: 1
+Dia: 1
+
+Vuelta: 4
+Nodo: 6001000200
+Carga: 9.42
+Tiempo: 93.55
+Camion: 0
+Dia: 1
+
+Vuelta: 5
+Nodo: 6001000200
+Carga: 14.18
+Tiempo: 96.88
+Camion: 1
+Dia: 1
+
+Vuelta: 6
+Nodo: 6001000204
+Carga: 17.73
+Tiempo: 106.45
+Camion: 0
+Dia: 1
+
+Vuelta: 7
+Nodo: 6001000199
+Carga: 14
+Tiempo: 108.48
+Camion: 0
+Dia: 2
+
+Vuelta: 8
+Nodo: 6001000202
+Carga: 5.92
+Tiempo: 90.58
+Camion: 0
+Dia: 2
+
+Vuelta: 9
+Nodo: 6001000202
+Carga: 18.74
+Tiempo: 99.56
+Camion: 1
+Dia: 2
+
+Vuelta: 10
+Nodo: 6001000202
+Carga: 20
+Tiempo: 100.44
+Camion: 1
+Dia: 2
+
+Objetivo 1: 	 103.72092261904761
+Objetivo 2: 	 12
+Completos: 	 4
+Preferencia: 	 12
+
+
+Gurobi 9.0.2: optimal solution; objective 0.8326549004
+52204 simplex iterations
+1711 branch-and-cut nodes
+plus 428 simplex iterations for intbasis
+
+#################################
+#################################
+Ejecucion: 3 
+#################################
+#################################
+
+F [*] :=
+1  117.804
+2   11
+;
+
+117.80 11.00 
+Vuelta: 0
+Nodo: 6001000200
+Carga: 6.33
+Tiempo: 91.39
+Camion: 0
+Dia: 0
+
+Vuelta: 1
+Nodo: 6001000200
+Carga: 17.26
+Tiempo: 99.04
+Camion: 1
+Dia: 0
+
+Vuelta: 2
+Nodo: 6001000200
+Carga: 20
+Tiempo: 100.96
+Camion: 1
+Dia: 0
+
+Vuelta: 3
+Nodo: 6001000204
+Carga: 17.73
+Tiempo: 106.45
+Camion: 0
+Dia: 0
+
+Vuelta: 4
+Nodo: 6001000198
+Carga: 15.13
+Tiempo: 117.83
+Camion: 1
+Dia: 1
+
+Vuelta: 5
+Nodo: 6001000202
+Carga: 20
+Tiempo: 100.44
+Camion: 0
+Dia: 1
+
+Vuelta: 6
+Nodo: 6001000203
+Carga: 17.27
+Tiempo: 98.05
+Camion: 0
+Dia: 1
+
+Vuelta: 7
+Nodo: 6001000196
+Carga: 20
+Tiempo: 103.48
+Camion: 0
+Dia: 2
+
+Vuelta: 8
+Nodo: 6001000196
+Carga: 20
+Tiempo: 103.48
+Camion: 1
+Dia: 2
+
+Vuelta: 9
+Nodo: 6001000202
+Carga: 14.4
+Tiempo: 96.52
+Camion: 0
+Dia: 2
+
+Vuelta: 10
+Nodo: 6001000202
+Carga: 10.26
+Tiempo: 93.62
+Camion: 1
+Dia: 2
+
+Objetivo 1: 	 117.80437500000002
+Objetivo 2: 	 11
+Completos: 	 4
+Preferencia: 	 12
+
+
+Gurobi 9.0.2: optimal solution; objective 0.7906490172
+65485 simplex iterations
+1729 branch-and-cut nodes
+plus 415 simplex iterations for intbasis
+
+#################################
+#################################
+Ejecucion: 4 
+#################################
+#################################
+
+F [*] :=
+1  117.804
+2   11
+;
+
+117.80 11.00 
+Vuelta: 0
+Nodo: 6001000200
+Carga: 9.42
+Tiempo: 93.55
+Camion: 0
+Dia: 0
+
+Vuelta: 1
+Nodo: 6001000200
+Carga: 20
+Tiempo: 100.96
+Camion: 1
+Dia: 0
+
+Vuelta: 2
+Nodo: 6001000200
+Carga: 14.18
+Tiempo: 96.88
+Camion: 1
+Dia: 0
+
+Vuelta: 3
+Nodo: 6001000204
+Carga: 17.73
+Tiempo: 106.45
+Camion: 0
+Dia: 0
+
+Vuelta: 4
+Nodo: 6001000198
+Carga: 15.13
+Tiempo: 117.83
+Camion: 0
+Dia: 1
+
+Vuelta: 5
+Nodo: 6001000202
+Carga: 20
+Tiempo: 100.44
+Camion: 1
+Dia: 1
+
+Vuelta: 6
+Nodo: 6001000203
+Carga: 17.27
+Tiempo: 98.05
+Camion: 1
+Dia: 1
+
+Vuelta: 7
+Nodo: 6001000196
+Carga: 20
+Tiempo: 103.48
+Camion: 0
+Dia: 2
+
+Vuelta: 8
+Nodo: 6001000196
+Carga: 20
+Tiempo: 103.48
+Camion: 1
+Dia: 2
+
+Vuelta: 9
+Nodo: 6001000202
+Carga: 10.26
+Tiempo: 93.62
+Camion: 0
+Dia: 2
+
+Vuelta: 10
+Nodo: 6001000202
+Carga: 14.4
+Tiempo: 96.52
+Camion: 1
+Dia: 2
+
+Objetivo 1: 	 117.80437500000002
+Objetivo 2: 	 11
+Completos: 	 4
+Preferencia: 	 12
+
+
+Gurobi 9.0.2: optimal solution; objective 0.7586270805
+126403 simplex iterations
+4812 branch-and-cut nodes
+plus 457 simplex iterations for intbasis
+
+#################################
+#################################
+Ejecucion: 5 
+#################################
+#################################
+
+F [*] :=
+1  127.471
+2    9
+;
+
+127.47 9.00 
+Vuelta: 0
+Nodo: 6001000200
+Carga: 20
+Tiempo: 100.96
+Camion: 0
+Dia: 0
+
+Vuelta: 1
+Nodo: 6001000200
+Carga: 14.18
+Tiempo: 96.88
+Camion: 0
+Dia: 0
+
+Vuelta: 2
+Nodo: 6001000200
+Carga: 9.42
+Tiempo: 93.55
+Camion: 1
+Dia: 0
+
+Vuelta: 3
+Nodo: 6001000204
+Carga: 17.73
+Tiempo: 106.45
+Camion: 1
+Dia: 0
+
+Vuelta: 4
+Nodo: 6001000196
+Carga: 17.82
+Tiempo: 101.95
+Camion: 0
+Dia: 1
+
+Vuelta: 5
+Nodo: 6001000202
+Carga: 18.74
+Tiempo: 99.56
+Camion: 1
+Dia: 1
+
+Vuelta: 6
+Nodo: 6001000202
+Carga: 20
+Tiempo: 100.44
+Camion: 1
+Dia: 1
+
+Vuelta: 7
+Nodo: 6001000203
+Carga: 17.27
+Tiempo: 98.05
+Camion: 0
+Dia: 1
+
+Vuelta: 8
+Nodo: 6001000196
+Carga: 14.82
+Tiempo: 99.85
+Camion: 0
+Dia: 2
+
+Vuelta: 9
+Nodo: 6001000196
+Carga: 20
+Tiempo: 103.48
+Camion: 1
+Dia: 2
+
+Vuelta: 10
+Nodo: 6001000196
+Carga: 10.06
+Tiempo: 96.52
+Camion: 1
+Dia: 2
+
+Vuelta: 11
+Nodo: 6001000202
+Carga: 5.92
+Tiempo: 90.58
+Camion: 0
+Dia: 2
+
+Objetivo 1: 	 127.47098214285714
+Objetivo 2: 	 9
+Completos: 	 3
+Preferencia: 	 8
+
+
+Gurobi 9.0.2: optimal solution; objective 0.782772903
+67964 simplex iterations
+3850 branch-and-cut nodes
+plus 373 simplex iterations for intbasis
+6 integer variables rounded to integers; maxerr = 6.75773e-07
+
+#################################
+#################################
+Ejecucion: 6 
+#################################
+#################################
+
+F [*] :=
+1  132.923
+2    7.66667
+;
+
+132.92 7.67 
+Vuelta: 0
+Nodo: 6001000200
+Carga: 20
+Tiempo: 100.96
+Camion: 1
+Dia: 0
+
+Vuelta: 1
+Nodo: 6001000202
+Carga: 20
+Tiempo: 100.44
+Camion: 0
+Dia: 0
+
+Vuelta: 2
+Nodo: 6001000202
+Carga: 18.74
+Tiempo: 99.56
+Camion: 0
+Dia: 0
+
+Vuelta: 3
+Nodo: 6001000203
+Carga: 17.27
+Tiempo: 98.05
+Camion: 1
+Dia: 0
+
+Vuelta: 4
+Nodo: 6001000196
+Carga: 19.48
+Tiempo: 103.12
+Camion: 1
+Dia: 1
+
+Vuelta: 5
+Nodo: 6001000200
+Carga: 9.42
+Tiempo: 93.55
+Camion: 0
+Dia: 1
+
+Vuelta: 6
+Nodo: 6001000200
+Carga: 14.18
+Tiempo: 96.88
+Camion: 1
+Dia: 1
+
+Vuelta: 7
+Nodo: 6001000204
+Carga: 17.73
+Tiempo: 106.45
+Camion: 0
+Dia: 1
+
+Vuelta: 8
+Nodo: 6001000196
+Carga: 20
+Tiempo: 103.48
+Camion: 0
+Dia: 2
+
+Vuelta: 9
+Nodo: 6001000196
+Carga: 3.21
+Tiempo: 91.73
+Camion: 1
+Dia: 2
+
+Vuelta: 10
+Nodo: 6001000196
+Carga: 20
+Tiempo: 103.48
+Camion: 1
+Dia: 2
+
+Vuelta: 11
+Nodo: 6001000202
+Carga: 5.92
+Tiempo: 90.58
+Camion: 0
+Dia: 2
+
+Objetivo 1: 	 132.92336696005734
+Objetivo 2: 	 7.666666072556596
+Completos: 	 3
+Preferencia: 	 8
+
+
+Gurobi 9.0.2: optimal solution; objective 0.8115496695
+146319 simplex iterations
+4984 branch-and-cut nodes
+plus 418 simplex iterations for intbasis
+
+#################################
+#################################
+Ejecucion: 7 
+#################################
+#################################
+
+F [*] :=
+1  132.923
+2    7.66667
+;
+
+132.92 7.67 
+Vuelta: 0
+Nodo: 6001000200
+Carga: 20
+Tiempo: 100.96
+Camion: 1
+Dia: 0
+
+Vuelta: 1
+Nodo: 6001000202
+Carga: 20
+Tiempo: 100.44
+Camion: 0
+Dia: 0
+
+Vuelta: 2
+Nodo: 6001000202
+Carga: 18.74
+Tiempo: 99.56
+Camion: 0
+Dia: 0
+
+Vuelta: 3
+Nodo: 6001000203
+Carga: 17.27
+Tiempo: 98.05
+Camion: 1
+Dia: 0
+
+Vuelta: 4
+Nodo: 6001000196
+Carga: 19.48
+Tiempo: 103.12
+Camion: 1
+Dia: 1
+
+Vuelta: 5
+Nodo: 6001000200
+Carga: 9.42
+Tiempo: 93.55
+Camion: 0
+Dia: 1
+
+Vuelta: 6
+Nodo: 6001000200
+Carga: 14.18
+Tiempo: 96.88
+Camion: 1
+Dia: 1
+
+Vuelta: 7
+Nodo: 6001000204
+Carga: 17.73
+Tiempo: 106.45
+Camion: 0
+Dia: 1
+
+Vuelta: 8
+Nodo: 6001000196
+Carga: 3.21
+Tiempo: 91.73
+Camion: 0
+Dia: 2
+
+Vuelta: 9
+Nodo: 6001000196
+Carga: 20
+Tiempo: 103.48
+Camion: 0
+Dia: 2
+
+Vuelta: 10
+Nodo: 6001000196
+Carga: 20
+Tiempo: 103.48
+Camion: 1
+Dia: 2
+
+Vuelta: 11
+Nodo: 6001000202
+Carga: 5.92
+Tiempo: 90.58
+Camion: 1
+Dia: 2
+
+Objetivo 1: 	 132.92336309523822
+Objetivo 2: 	 7.666666666666666
+Completos: 	 3
+Preferencia: 	 8
+
+
+Gurobi 9.0.2: optimal solution; objective 0.8468573351
+255141 simplex iterations
+12736 branch-and-cut nodes
+plus 273 simplex iterations for intbasis
+2 integer variables rounded to integers; maxerr = 2.45874e-07
+
+#################################
+#################################
+Ejecucion: 8 
+#################################
+#################################
+
+F [*] :=
+1  134.088
+2    7
+;
+
+134.09 7.00 
+Vuelta: 0
+Nodo: 6001000200
+Carga: 20
+Tiempo: 100.96
+Camion: 1
+Dia: 0
+
+Vuelta: 1
+Nodo: 6001000202
+Carga: 18.74
+Tiempo: 99.56
+Camion: 0
+Dia: 0
+
+Vuelta: 2
+Nodo: 6001000202
+Carga: 20
+Tiempo: 100.44
+Camion: 0
+Dia: 0
+
+Vuelta: 3
+Nodo: 6001000203
+Carga: 17.27
+Tiempo: 98.05
+Camion: 1
+Dia: 0
+
+Vuelta: 4
+Nodo: 6001000196
+Carga: 19.48
+Tiempo: 103.12
+Camion: 1
+Dia: 1
+
+Vuelta: 5
+Nodo: 6001000200
+Carga: 9.42
+Tiempo: 93.55
+Camion: 0
+Dia: 1
+
+Vuelta: 6
+Nodo: 6001000200
+Carga: 14.18
+Tiempo: 96.88
+Camion: 1
+Dia: 1
+
+Vuelta: 7
+Nodo: 6001000204
+Carga: 17.73
+Tiempo: 106.45
+Camion: 0
+Dia: 1
+
+Vuelta: 8
+Nodo: 6001000196
+Carga: 20
+Tiempo: 103.48
+Camion: 0
+Dia: 2
+
+Vuelta: 9
+Nodo: 6001000196
+Carga: 10.06
+Tiempo: 96.52
+Camion: 0
+Dia: 2
+
+Vuelta: 10
+Nodo: 6001000201
+Carga: 16.65
+Tiempo: 109.42
+Camion: 1
+Dia: 2
+
+Vuelta: 11
+Nodo: 6001000202
+Carga: 5.92
+Tiempo: 90.58
+Camion: 1
+Dia: 2
+
+Objetivo 1: 	 134.08842261904738
+Objetivo 2: 	 7.000000968132547
+Completos: 	 3
+Preferencia: 	 8
+
+
+Gurobi 9.0.2: optimal solution; objective 0.8856446385
+690303 simplex iterations
+43812 branch-and-cut nodes
+plus 524 simplex iterations for intbasis
+
+#################################
+#################################
+Ejecucion: 9 
+#################################
+#################################
+
+F [*] :=
+1  134.383
+2    6.66667
+;
+
+134.38 6.67 
+Vuelta: 0
+Nodo: 6001000200
+Carga: 20
+Tiempo: 100.96
+Camion: 0
+Dia: 0
+
+Vuelta: 1
+Nodo: 6001000200
+Carga: 20
+Tiempo: 100.96
+Camion: 1
+Dia: 0
+
+Vuelta: 2
+Nodo: 6001000202
+Carga: 18
+Tiempo: 99.04
+Camion: 1
+Dia: 0
+
+Vuelta: 3
+Nodo: 6001000203
+Carga: 17.27
+Tiempo: 98.05
+Camion: 0
+Dia: 0
+
+Vuelta: 4
+Nodo: 6001000196
+Carga: 20
+Tiempo: 103.48
+Camion: 0
+Dia: 1
+
+Vuelta: 5
+Nodo: 6001000196
+Carga: 20
+Tiempo: 103.48
+Camion: 1
+Dia: 1
+
+Vuelta: 6
+Nodo: 6001000202
+Carga: 12.26
+Tiempo: 95.02
+Camion: 0
+Dia: 1
+
+Vuelta: 7
+Nodo: 6001000202
+Carga: 14.4
+Tiempo: 96.52
+Camion: 1
+Dia: 1
+
+Vuelta: 8
+Nodo: 6001000196
+Carga: 16.88
+Tiempo: 101.29
+Camion: 0
+Dia: 2
+
+Vuelta: 9
+Nodo: 6001000196
+Carga: 5.82
+Tiempo: 93.55
+Camion: 1
+Dia: 2
+
+Vuelta: 10
+Nodo: 6001000200
+Carga: 3.59
+Tiempo: 89.47
+Camion: 0
+Dia: 2
+
+Vuelta: 11
+Nodo: 6001000204
+Carga: 17.73
+Tiempo: 106.45
+Camion: 1
+Dia: 2
+
+Objetivo 1: 	 134.38270833333334
+Objetivo 2: 	 6.666666666666667
+Completos: 	 2
+Preferencia: 	 5
+
+
+Gurobi 9.0.2: optimal solution; objective 0.936111088
+585648 simplex iterations
+36157 branch-and-cut nodes
+plus 332 simplex iterations for intbasis
+
+#################################
+#################################
+Ejecucion: 10 
+#################################
+#################################
+
+F [*] :=
+1  135.502
+2    4.33333
+;
+
+135.50 4.33 
+Vuelta: 0
+Nodo: 6001000200
+Carga: 20
+Tiempo: 100.96
+Camion: 0
+Dia: 0
+
+Vuelta: 1
+Nodo: 6001000200
+Carga: 20
+Tiempo: 100.96
+Camion: 1
+Dia: 0
+
+Vuelta: 2
+Nodo: 6001000202
+Carga: 18
+Tiempo: 99.04
+Camion: 0
+Dia: 0
+
+Vuelta: 3
+Nodo: 6001000202
+Carga: 18
+Tiempo: 99.04
+Camion: 1
+Dia: 0
+
+Vuelta: 4
+Nodo: 6001000196
+Carga: 17.82
+Tiempo: 101.95
+Camion: 0
+Dia: 1
+
+Vuelta: 5
+Nodo: 6001000196
+Carga: 10.06
+Tiempo: 96.52
+Camion: 1
+Dia: 1
+
+Vuelta: 6
+Nodo: 6001000196
+Carga: 20
+Tiempo: 103.48
+Camion: 1
+Dia: 1
+
+Vuelta: 7
+Nodo: 6001000203
+Carga: 17.27
+Tiempo: 98.05
+Camion: 0
+Dia: 1
+
+Vuelta: 8
+Nodo: 6001000200
+Carga: 3.59
+Tiempo: 89.47
+Camion: 0
+Dia: 2
+
+Vuelta: 9
+Nodo: 6001000201
+Carga: 18.24
+Tiempo: 110.53
+Camion: 0
+Dia: 2
+
+Vuelta: 10
+Nodo: 6001000202
+Carga: 8.66
+Tiempo: 92.5
+Camion: 1
+Dia: 2
+
+Vuelta: 11
+Nodo: 6001000204
+Carga: 17.73
+Tiempo: 106.45
+Camion: 1
+Dia: 2
+
+Objetivo 1: 	 135.50184523809523
+Objetivo 2: 	 4.333333333333333
+Completos: 	 1
+Preferencia: 	 2
+
+
+Gurobi 9.0.2: optimal solution; objective 0.9999935854
+309663 simplex iterations
+26747 branch-and-cut nodes
+plus 336 simplex iterations for intbasis
+
+#################################
+#################################
+Ejecucion: 11 
+#################################
+#################################
+
+F [*] :=
+1  135.502
+2    4.33333
+;
+
+135.50 4.33 
+Vuelta: 0
+Nodo: 6001000200
+Carga: 20
+Tiempo: 100.96
+Camion: 0
+Dia: 0
+
+Vuelta: 1
+Nodo: 6001000200
+Carga: 20
+Tiempo: 100.96
+Camion: 1
+Dia: 0
+
+Vuelta: 2
+Nodo: 6001000202
+Carga: 18
+Tiempo: 99.04
+Camion: 0
+Dia: 0
+
+Vuelta: 3
+Nodo: 6001000202
+Carga: 18
+Tiempo: 99.04
+Camion: 1
+Dia: 0
+
+Vuelta: 4
+Nodo: 6001000196
+Carga: 17.82
+Tiempo: 101.95
+Camion: 0
+Dia: 1
+
+Vuelta: 5
+Nodo: 6001000196
+Carga: 10.06
+Tiempo: 96.52
+Camion: 1
+Dia: 1
+
+Vuelta: 6
+Nodo: 6001000196
+Carga: 20
+Tiempo: 103.48
+Camion: 1
+Dia: 1
+
+Vuelta: 7
+Nodo: 6001000203
+Carga: 17.27
+Tiempo: 98.05
+Camion: 0
+Dia: 1
+
+Vuelta: 8
+Nodo: 6001000200
+Carga: 3.59
+Tiempo: 89.47
+Camion: 0
+Dia: 2
+
+Vuelta: 9
+Nodo: 6001000201
+Carga: 18.24
+Tiempo: 110.53
+Camion: 0
+Dia: 2
+
+Vuelta: 10
+Nodo: 6001000202
+Carga: 8.66
+Tiempo: 92.5
+Camion: 1
+Dia: 2
+
+Vuelta: 11
+Nodo: 6001000204
+Carga: 17.73
+Tiempo: 106.45
+Camion: 1
+Dia: 2
+
+Objetivo 1: 	 135.50184523809526
+Objetivo 2: 	 4.333333333333333
+Completos: 	 1
+Preferencia: 	 2
+
+
+
+#################################
+#################################
+Resultados Finales 
+#################################
+#################################
+
+:     MV        PV    completos1 preferencia1 TCPU1    :=
+1   135.502   100.345      0            0        4
+2    12         0          4           12        2
+;
+
+# $6 = preferencia2
+:        BT1           BT2         FN1       FN2    completos2   $6 TCPU2    :=
+1    1e-05             0.99999   103.721   12            4       12    2
+2        0.1           0.9       103.721   12            4       12    2
+3        0.2           0.8       117.804   11            4       12    1
+4        0.3           0.7       117.804   11            4       12    2
+5        0.4           0.6       127.471    9            3        8    4
+6        0.5           0.5       132.923    7.66667      3        8    1
+7        0.6           0.4       132.923    7.66667      3        8    4
+8        0.7           0.3       134.088    7            3        8    6
+9        0.8           0.2       134.383    6.66667      2        5   11
+10       0.9           0.1       135.502    4.33333      1        2   12
+11       0.99999   1e-05         135.502    4.33333      1        2    5
+;
+
