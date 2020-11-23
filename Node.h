@@ -42,4 +42,4 @@ class Node{
 };
 
 bool OrdenarPref(const Node* n1, const Node* n2);
-
+bool OrdenarCarga(const Node* n1, const Node* n2);

@@ -1,6 +1,7 @@
 #include "Node.h"
 
 Node::Node(const Node &n2){
+    this->IDnodo = n2.IDnodo;
     this->CantEsc = n2.CantEsc;
     this->PrefNodo = n2.PrefNodo;
     this->DesdeD = n2.DesdeD;
@@ -66,3 +67,6 @@ bool OrdenarPref(const Node* n1, const Node* n2){
   return ((Node*)n1)->getPrefNodo() > ((Node*)n2)->getPrefNodo() ;
 }
 
+bool OrdenarCarga(const Node* n1, const Node* n2){
+  return (((Node*)n1)->getCantEsc() / ((Node*)n1)->getPrefNodo()) < (((Node*)n2)->getCantEsc() / ((Node*)n2)->getPrefNodo()) ;
+}

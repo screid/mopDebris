@@ -37,7 +37,7 @@ bool Construction::ConstruirSolucionFact(Solution *sol){
   }
 
   //Se ordenan los nodos según al preferencia del día 
-  sort(this->ListaNodos.begin(), this->ListaNodos.end(), OrdenarPref) ;
+  sort(this->ListaNodos.begin(), this->ListaNodos.end(), OrdenarCarga) ;
 
   sol->getpi()->imprimirProblemInstance();
   
@@ -91,7 +91,7 @@ bool Construction::ConstruirSolucionFact(Solution *sol){
           if (debug) cout << "De acuerdo al camión y al nodo, se puede recoger:  " << tempCarga << endl;
           
           //Tiempo total de una vuelta (t. retiro escombros + t. desplazamiento)
-          float Tvuelta = (temp->getDesdeD() + temp->getHastaD()) / sol->getpi()->getVelocidad() + tempCarga / sol->getpi()->getTiempoRetiroEsc();
+          float Tvuelta = (temp->getDesdeD() + temp->getHastaD()) / sol->getpi()->getVelocidad() + tempCarga * sol->getpi()->getTiempoRetiroEsc();
           if (debug) cout << "Tvuelta: " << Tvuelta << endl;
           
           F2 += tempCarga * sol->getpi()->getUnDia(d)->getPrefDia() ;
