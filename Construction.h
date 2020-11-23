@@ -8,14 +8,14 @@ using namespace std;
 class Construction{
 
   private:
-
+    vector<Node *> ListaNodos;
   public:
 
     //Método constructor
     Construction(){};
 
     //Método destructor
-    ~Construction(){};
+    ~Construction();
 
     //Detecta si la solución es factible o no
     bool ConstruirSolucionFact(Solution *sol);

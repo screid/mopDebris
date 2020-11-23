@@ -22,7 +22,8 @@ class Node{
       DesdeD = 0;
       HastaD = 0;
 
-    };    //Constructor
+    };//Constructor    
+    Node(const Node &n2); //Otro constructor
     ~Node(){};   //Destructor
 
     void setIDnodo(long int IDnodo);

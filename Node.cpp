@@ -1,5 +1,12 @@
 #include "Node.h"
 
+Node::Node(const Node &n2){
+    this->CantEsc = n2.CantEsc;
+    this->PrefNodo = n2.PrefNodo;
+    this->DesdeD = n2.DesdeD;
+    this->HastaD = n2.HastaD;
+}
+
 void Node::setIDnodo(long int IDnodo){
   this->IDnodo = IDnodo; 
 }

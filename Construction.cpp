@@ -1,6 +1,15 @@
 #include "Construction.h"
 #include <algorithm>
 
+Construction::~Construction(){
+    
+for (Node *n: this->ListaNodos){
+    delete n;
+  }
+  this->ListaNodos.shrink_to_fit();
+  this->ListaNodos.clear();
+  
+}
 
 //Colocar en clase utilities
 float Minimo(float a, float b){
@@ -22,15 +31,19 @@ bool Construction::ConstruirSolucionFact(Solution *sol){
   int F4 = 0;
 
   //Se copia al vector de nodos
-  vector <Node*> ListaNodos = sol->getpi()->getTodosNodos() ;
+  for (Node *n: sol->getpi()->getTodosNodos()){
+    auto copy = new Node(*n);
+    this->ListaNodos.push_back(copy);
+  }
 
   //Se ordenan los nodos según al preferencia del día 
-  sort(ListaNodos.begin(), ListaNodos.end(), OrdenarPref) ;
+  sort(this->ListaNodos.begin(), this->ListaNodos.end(), OrdenarPref) ;
 
   sol->getpi()->imprimirProblemInstance();
   
   //partimos desde el nodo con mayor preferencia
-  vector<Node *>::iterator it = ListaNodos.begin(); // Descartar el depósito.  
+
+  vector<Node *>::iterator it = this->ListaNodos.begin() + 1; // Descartar el depósito.  
   Node* temp = (*it); 
 
   if (temp == sol->getpi()->getDeposito()){
@@ -40,6 +53,7 @@ bool Construction::ConstruirSolucionFact(Solution *sol){
   
   if (debug) temp->imprimirNodo();
   if (debug) getchar();
+  
   //Se guarda la cantidad escombros totales en el nodo 
   float EscDisponible = temp->getCantEsc();
   int contV = 0;
@@ -106,7 +120,7 @@ bool Construction::ConstruirSolucionFact(Solution *sol){
                 
                 if (debug) cout << " --->Se acabaron los escombros en el nodo" << endl;
                 it++ ;
-                if(it == ListaNodos.end()){ //Cuando ya no quedan nodos
+                if(it == this->ListaNodos.end()){ //Cuando ya no quedan nodos
                     sol->setF1(F1);
                     sol->setF2(F2);
                     sol->setF3(F3);
