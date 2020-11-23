@@ -50,6 +50,14 @@ void Solution::setF4(int F4){
   this->F4 = F4;
 }
 
+float Solution::getFo(int i){
+  if (i == 0){
+    return this->F1;
+  } else {
+    return this->F2;
+  }
+}
+
 float Solution::getF1(void){
   return this->F1 ;
 }
@@ -65,3 +73,30 @@ int Solution::getF3(void){
 int Solution::getF4(void){
   return this->F4 ;
 } 
+
+void Solution::copiarSolucion(Solution *slt){
+
+  //Copio los fi's
+  this->setF1(slt->getF1());
+  this->setF2(slt->getF2());
+  this->setF3(slt->getF3());
+  this->setF4(slt->getF4());
+
+  //Copio las vueltas 
+  for (Round* i: this->Vueltas){
+    delete i;  //Primero se eliminan los que se tienen :c 
+  }
+
+  //Fijate que aun falta borrar espacio eh 
+  this->Vueltas.shrink_to_fit();
+  this->Vueltas.clear();
+
+  for(Round* i: slt->Vueltas){
+    auto CopiaVuelta = new Round(*i);
+    this->Vueltas.push_back(CopiaVuelta);
+  }
+
+  //Copiar pi
+  this->pi = slt->getpi();
+
+}

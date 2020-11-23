@@ -9,6 +9,15 @@ Round::Round(int IDVuelta, long int IDNodo, float CargaRecogida, float TiempoVue
   this->DiaVuelta = DiaVuelta;
 }
 
+Round::Round(const Round &r2){
+  this->IDVuelta = r2.IDVuelta;
+  this->IDNodo = r2.IDNodo;
+  this->CargaRecogida = r2.CargaRecogida;
+  this->TiempoVuelta = r2.TiempoVuelta;
+  this->NombreCamion = r2.NombreCamion;
+  this->DiaVuelta = r2.DiaVuelta;
+}
+
 void Round::setIDVuelta(int IDVuelta){
   this->IDVuelta = IDVuelta;
 }

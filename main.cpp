@@ -7,6 +7,7 @@
 #include "ProblemInstance.h"
 #include "Solution.h"
 #include "Construction.h"
+#include "Pareto.h"
 
 using namespace std;
 
@@ -32,14 +33,26 @@ int main(int argc, char **argv) {
   ProblemInstance* pi = fh.readInputFile();
 
   //Método para imprimir todo resumido y bonito
-  pi-> imprimirProblemInstance();
+  // pi-> imprimirProblemInstance();
 
-
-
+  //Crea una nueva solución y un constructor 
   Solution* solucion = new Solution(pi) ;
   Construction* construccion = new Construction();
 
-  construccion->ConstruirSolucionFact(solucion);
+  //Creo frente de pareto
+  auto fp = new Pareto();
 
-  solucion->ImprimirSolucion();
+  for (int it_ext= 0; it_ext < atoi(argv[3]); it_ext++){
+
+    construccion->ConstruirSolucionFact(solucion);
+  
+    fp->ModificarPareto(solucion);
+  
+  }
+
+  fp->imprimirPareto();
+
+  //imprimir solución 
+  //solucion->ImprimirSolucion();
+
 }

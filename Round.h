@@ -19,6 +19,7 @@ class Round{
   public:
 
     Round(int IDVuelta, long int IDNodo, float CargaRecogida, float TiempoVuelta, Truck* NombreCamion, Day* DiaVuelta);
+    Round(const Round &r2);
     ~Round(){};
 
     void setIDVuelta(int IDVuelta);

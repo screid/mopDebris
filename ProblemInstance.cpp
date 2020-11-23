@@ -134,6 +134,10 @@ int ProblemInstance::getCantVueltas(void){
   return this->CantVueltas;
 }
 
+int ProblemInstance::getCantFO(void){
+  return 2;
+}
+
 
 float ProblemInstance::getCapacidad(void){
   return this->Capacidad;

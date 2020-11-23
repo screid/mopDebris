@@ -75,6 +75,7 @@ class ProblemInstance{
     int getCantNodos(void);
     int getCantDias(void);
     int getCantVueltas(void);
+    int getCantFO(void);
 
     void setCapacidad(float Capacidad);
     void setVelocidad(float Velocidad);

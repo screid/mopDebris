@@ -19,21 +19,27 @@ class Solution{
     //vector <float*> TiempoDisponible ;
 
   public:
+  
     Solution(ProblemInstance* pi);
     ~Solution(){};
 
     ProblemInstance* getpi(void);
-
     void setVuelta(Round*);
+
     void setF1(float);
     void setF2(float);
     void setF3(int);
     void setF4(int);
 
+    float getFo(int);
+
     float getF1(void);
     float getF2(void);
     int getF3(void);
     int getF4(void);
+
+    //Método para copiar una clase 
+    void copiarSolucion(Solution *slt);
 
     void ImprimirSolucion(void);
 };

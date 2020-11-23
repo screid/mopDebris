@@ -1,5 +1,5 @@
 #Aquí se agregan los objetos para compilar
-OBJS = main.o Truck.o Node.o Day.o Round.o ProblemInstance.o FileHandler.o Solution.o Construction.o
+OBJS = main.o Truck.o Node.o Day.o Round.o ProblemInstance.o FileHandler.o Solution.o Construction.o Pareto.o
 #Para poner opciones de la versión de C++ a ocupar 
 FLAGS = -O3
 
@@ -19,7 +19,7 @@ MOPDebris: $(OBJS)
 # nombreAlgoritmo nombreArchivo semilla itExt itInt
 
 exe:
-	./MOPDebris Instancias/instancia4.txt 10
+	./MOPDebris Instancias/instancia4.txt 13 100
   
 clean: 
 	rm -rf *.o MOPDebris
