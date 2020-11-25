@@ -1,6 +1,7 @@
 #include "Node.h"
 
 Node::Node(const Node &n2){
+    this->PosNodo = n2.PosNodo;
     this->IDnodo = n2.IDnodo;
     this->CantEsc = n2.CantEsc;
     this->PrefNodo = n2.PrefNodo;
@@ -10,6 +11,10 @@ Node::Node(const Node &n2){
 
 void Node::setIDnodo(long int IDnodo){
   this->IDnodo = IDnodo; 
+}
+
+void Node::setPosNodo(int PosNodo){
+  this->PosNodo = PosNodo; 
 }
 
 void Node::setCantEsc(float CantEsc){
@@ -32,6 +37,10 @@ void Node::setHastaD(float distancia){
 
 long int Node::getIDnodo(void){
   return this->IDnodo;
+}
+
+int Node::getPosNodo(void){
+  return this->PosNodo;
 }
 
 float Node::getCantEsc(void){

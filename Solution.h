@@ -15,13 +15,13 @@ class Solution{
     int F3 ;
     int F4 ;
 
-    //vector <float*> EscDisponible ;
-    //vector <float*> TiempoDisponible ;
+    vector <float> EscRemanente ;
+    vector <float> TDisponibleCamion ;
 
   public:
   
     Solution(ProblemInstance* pi);
-    ~Solution(){};
+    ~Solution();
 
     ProblemInstance* getpi(void);
     void setVuelta(Round*);
@@ -37,6 +37,14 @@ class Solution{
     float getF2(void);
     int getF3(void);
     int getF4(void);
+
+    void setEscRemanente(int posicion, float cantidad);
+    float getEscRemanente(int posicion);
+
+    void setTDisponibleCamion(int camion, int dia, float cantidad);
+    float getTDisponibleCamion(int camion, int dia);
+
+    int getCantVueltas(void);
 
     //Método para copiar una clase 
     void copiarSolucion(Solution *slt);

@@ -32,8 +32,10 @@ bool Construction::ConstruirSolucionFact(Solution *sol){
 
   //Se copia al vector de nodos
   for (Node *n: sol->getpi()->getTodosNodos()){
-    auto copy = new Node(*n);
-    this->ListaNodos.push_back(copy);
+    if (n->getIDnodo() != sol->getpi()->getDeposito()->getIDnodo()){ // descarta el nodo deposito
+      auto copy = new Node(*n);
+      this->ListaNodos.push_back(copy);
+    }
   }
 
   //Se ordenan los nodos según al preferencia del día 
@@ -43,20 +45,15 @@ bool Construction::ConstruirSolucionFact(Solution *sol){
   
   //partimos desde el nodo con mayor preferencia
 
-  vector<Node *>::iterator it = this->ListaNodos.begin() + 1; // Descartar el depósito.  
+  vector<Node *>::iterator it = this->ListaNodos.begin();   
   Node* temp = (*it); 
 
-  if (temp == sol->getpi()->getDeposito()){
-    it++;
-    temp = (*it);
-  }
-  
   if (debug) temp->imprimirNodo();
   if (debug) getchar();
   
   //Se guarda la cantidad escombros totales en el nodo 
   float EscDisponible = temp->getCantEsc();
-  int contV = 0;
+  int contV = 0; //Se inicia un contador de vueltas.
   for (int d=0 ; d < sol->getpi()->getCantDias() ; d++){
     if (debug) cout << "Día: " << d << endl ;
 
@@ -69,8 +66,6 @@ bool Construction::ConstruirSolucionFact(Solution *sol){
       //Si le queda tiempo disponible:
       while (Tdisponible > 0){
         if (debug) cout << "Tdisponible > 0 !" << endl;
-        //Se inicia un contador de vueltas.
-        
         
         //Si el tiempo disponible es mayor a lo que se va a ocupar
         if (debug) cout << "Tiempo de viaje al nodo: " << (temp->getDesdeD() + temp->getHastaD()) / sol->getpi()->getVelocidad()  << endl;
@@ -100,6 +95,12 @@ bool Construction::ConstruirSolucionFact(Solution *sol){
           //Se construye una vuelta
           Round* tempVuelta = new Round(contV, temp->getIDnodo(), tempCarga, Tvuelta, sol->getpi()->getUnCamion(k), sol->getpi()->getUnDia(d)) ;
           sol->setVuelta(tempVuelta);
+
+          //guardar el escombro disponible en el nodo
+          sol->setEscRemanente(temp->getPosNodo(),sol->getEscRemanente(temp->getPosNodo())-tempCarga);
+
+          sol->setTDisponibleCamion(k,d,sol->getTDisponibleCamion(k,d)-Tvuelta);
+
      
           if (debug) tempVuelta->imprimirVuelta();
           
@@ -112,7 +113,7 @@ bool Construction::ConstruirSolucionFact(Solution *sol){
           if (debug) cout << "EscDisponible actualizado " << EscDisponible << endl;
 
           //Si ya no quedan escombros disponibles, paso al siguiente nodo
-          if (EscDisponible == 0){
+          if (EscDisponible < 0.1){
                 F1 += temp->getPrefNodo() * sol->getpi()->getUnDia(d)->getPrefDia() ;
                 F3++ ;
                 F4 += temp->getPrefNodo();
@@ -128,10 +129,7 @@ bool Construction::ConstruirSolucionFact(Solution *sol){
                     return true;
                 }
                 temp = (*it);
-                if (temp == sol->getpi()->getDeposito()){
-                  it++;
-                  temp = (*it);
-                } 
+
                 EscDisponible = temp->getCantEsc();
                 if (debug) temp->imprimirNodo();
                 if (debug) getchar();

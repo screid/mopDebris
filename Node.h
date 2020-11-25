@@ -10,6 +10,7 @@ class Node{
     long int IDnodo;
     float CantEsc;
     int PrefNodo;
+    int PosNodo;
 
     float DesdeD;
     float HastaD;
@@ -37,6 +38,9 @@ class Node{
     int getPrefNodo(void);
     float getDesdeD(void);
     float getHastaD(void);
+
+    void setPosNodo(int);
+    int getPosNodo(void);
 
     void imprimirNodo(void);
 };

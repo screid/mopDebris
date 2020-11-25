@@ -36,18 +36,32 @@ int main(int argc, char **argv) {
   // pi-> imprimirProblemInstance();
 
   //Crea una nueva solución y un constructor 
-  Solution* solucion = new Solution(pi) ;
-  Construction* construccion = new Construction();
+  Solution* solucion ;//= new Solution(pi) ;
+  Construction* construccion ;//= new Construction();
 
   //Creo frente de pareto
   auto fp = new Pareto();
 
   for (int it_ext= 0; it_ext < atoi(argv[3]); it_ext++){
+    
+    solucion = new Solution(pi) ;
+
+    solucion->ImprimirSolucion();
+
+    getchar();
+
+    construccion = new Construction();
 
     construccion->ConstruirSolucionFact(solucion);
   
     fp->ModificarPareto(solucion);
-  
+
+    solucion->ImprimirSolucion();
+
+    delete solucion ; 
+    delete construccion;
+
+    getchar();
   }
 
   fp->imprimirPareto();

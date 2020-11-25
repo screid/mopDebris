@@ -83,6 +83,7 @@ ProblemInstance* FileHandler::readInputFile(){
     }
 
     temp->setIDnodo(stol(read.c_str()));
+    temp->setPosNodo(i);
     pi->agregarNodo(temp);
   }
 

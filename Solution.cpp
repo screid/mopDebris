@@ -3,13 +3,29 @@
 Solution::Solution(ProblemInstance* pi){
   this->pi = pi;
 
-  //for (Node* n: pi->getTodosNodos()){
-  //  this->EscDisponible.push_back(n->getCantEsc());
-  //}
+  for (Node* n: pi->getTodosNodos()){
+    this->EscRemanente.push_back(n->getCantEsc());
+  }
 
-  //for (Truck* n: pi->getTodosCamiones()){
-  //  this->TiempoDisponible.push_back(n->getTiempoCamion());
-  //}
+  this->F1 = 0 ;
+  this->F2 = 0 ;
+  this->F3 = 0 ;
+  this->F4 = 0 ;
+
+  for (Truck* n: pi->getTodosCamiones()){
+    for (Day* d: pi->getTodosDias() ){
+
+      this->TDisponibleCamion.push_back(pi->getTiempoMaxTrabajo());
+    }
+  }
+}
+
+Solution::~Solution(){
+  this->EscRemanente.clear();
+  this->EscRemanente.shrink_to_fit();
+
+  this->TDisponibleCamion.clear();
+  this->TDisponibleCamion.shrink_to_fit();
 }
 
 
@@ -32,6 +48,25 @@ void Solution::ImprimirSolucion(){
   cout << "Objetivo 3: " << this->F3 << endl ;
   cout << "Objetivo 4: " << this->F4 << endl ;
 
+  int h = 0 ;
+  for (float i: this->EscRemanente){
+    cout << h << "  " << this->getpi()->getUnNodo(h)->getIDnodo() << "  " << i << endl ;
+    h ++;
+  }
+  
+  h = 0 ;
+  int d = 0 ;
+  for (float i: this->TDisponibleCamion){
+
+    cout << this->getpi()->getUnCamion(h)->getIDCamion() << " " << d << " " << i << endl ;
+
+    d++;
+
+    if (d % this->getpi()->getCantDias() == 0){
+      h++;
+      d=0;
+    }
+  }
 }
 
 void Solution::setF1(float F1){
@@ -74,6 +109,28 @@ int Solution::getF4(void){
   return this->F4 ;
 } 
 
+float Solution::getEscRemanente(int posicion){
+  return this->EscRemanente.at(posicion);
+}
+
+void Solution::setEscRemanente(int posicion, float cantidad){
+  this->EscRemanente.at(posicion) = cantidad;
+}
+
+
+float Solution::getTDisponibleCamion(int camion, int dia){
+  return this->TDisponibleCamion.at( camion*this->getpi()->getCantDias()+dia );
+}
+
+void Solution::setTDisponibleCamion(int camion, int dia, float cantidad){
+  this->TDisponibleCamion.at(camion*this->getpi()->getCantDias()+dia) = cantidad;
+}
+
+
+int Solution::getCantVueltas(void){
+  return this->Vueltas.size();
+}
+
 void Solution::copiarSolucion(Solution *slt){
 
   //Copio los fi's
@@ -94,6 +151,15 @@ void Solution::copiarSolucion(Solution *slt){
   for(Round* i: slt->Vueltas){
     auto CopiaVuelta = new Round(*i);
     this->Vueltas.push_back(CopiaVuelta);
+  }
+
+  //copiar la cantidad de escombros disponibles en el nodo
+  this->EscRemanente.shrink_to_fit();
+  this->EscRemanente.clear();
+
+  for (float i: slt->EscRemanente){
+    int copia = i ;
+    this-> EscRemanente.push_back(copia) ;
   }
 
   //Copiar pi
