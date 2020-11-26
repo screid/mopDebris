@@ -101,7 +101,6 @@ bool Construction::ConstruirSolucionFact(Solution *sol){
 
           sol->setTDisponibleCamion(k,d,sol->getTDisponibleCamion(k,d)-Tvuelta);
 
-     
           if (debug) tempVuelta->imprimirVuelta();
           
           //Al tiempo disponible se le resta el tiempo de la vuelta.
@@ -134,11 +133,13 @@ bool Construction::ConstruirSolucionFact(Solution *sol){
                 if (debug) temp->imprimirNodo();
                 if (debug) getchar();
           }
-          if (Tdisponible == 0){
+          
+          if (Tdisponible < 0.1){
+              if (debug) cout << "Acá se acaba el tiempo" << endl;
+              if (debug) getchar();
               contV++ ;
               break;
           }
-          if (debug) getchar();
           //Se aumeta el contador de las vueltas
           contV++ ;
         }
