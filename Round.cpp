@@ -26,7 +26,23 @@ int Round::getIDVuelta(void){
   return this->IDVuelta;
 }
 
-void Round::imprimirVuelta(void){
+long int Round::getIDNodo(void){
+  return this->IDNodo;
+}
+float Round::getCargaRecogida(void){
+  return this->CargaRecogida;
+}
+float Round::getTiempoVuelta(void){
+  return this->TiempoVuelta;
+}
+Truck* Round::getNombreCamion(void){
+  return this->NombreCamion;
+}
+Day* Round::getDiaVuelta(void){
+  return this->DiaVuelta;
+}
+
+/*void Round::imprimirVuelta(void){
   cout << "---------------^~^----------------" << endl;
   cout << "Vuelta: " << this->IDVuelta << endl;
   cout << "Nodo: " << this->IDNodo << endl;
@@ -35,5 +51,14 @@ void Round::imprimirVuelta(void){
   cout << "Camión: " << this->NombreCamion->getIDCamion() << endl;
   cout << "Día: " << this->DiaVuelta->getIDDia() << endl;
   cout << "---------------^~^----------------" << endl;
-}
+}*/
 
+void Round::imprimirVuelta(void){
+  cout << " V: " << this->IDVuelta;
+  cout << " \tN: " << this->IDNodo;
+  cout << " \tC: " << this->CargaRecogida;
+  cout << " \tT: " << this->TiempoVuelta;
+  cout << " \tC: " << this->NombreCamion->getIDCamion();
+  cout << " \tD: " << this->DiaVuelta->getIDDia() << endl;
+  
+}

@@ -3,9 +3,39 @@
 
 bool Movimiento::modificarSolucion(Solution *sol){
 
-  int indice = sol->getpi()->generarNAleat(0, sol->getCantVueltas()-1);
-
   //eliminar getCantVueltas
+  int veces = 2;
+  int indice ;
+  int cliente;
+  int camion;
+  int dia;
+
+  sol->ImprimirSolucion();
+  getchar();
+
+  for (int i=0 ; i<veces ; i++){
+    cout << "I: " << i << endl;
+    indice = sol->getpi()->generarNAleat(0, sol->getCantVueltas()-1); //escoger vuelta aleatoria
+
+    Round* EliminarV = sol->getUnaVuelta(indice); //tomamos la vuelta escogida
+    cout <<"-----------------------------"<< endl;
+    EliminarV->imprimirVuelta();
+    cout <<"-----------------------------"<< endl;
+
+    cliente = sol->getpi()->getUnNodo2(EliminarV->getIDNodo())->getPosNodo(); //nodo al que se le cambian las cosas
+    camion = EliminarV->getNombreCamion()->getIDCamion();
+    dia = EliminarV->getDiaVuelta()->getIDDia();
+
+    sol->setEscRemanente(cliente, sol->getEscRemanente(cliente)+EliminarV->getCargaRecogida()); //le regresamos los escombros recogidos en esa vuelta al cliente  
+    
+    sol->setTDisponibleCamion(camion, dia, EliminarV->getTiempoVuelta()+ sol->getTDisponibleCamion(camion,dia));//le regresamos el tiempo disponible al camion en el dia correspondiente
+
+
+    sol->EliminarVuelta(indice);
+
+    sol->ImprimirSolucion();
+    getchar();
+  }
 
   //actualizar escombros remanente
 

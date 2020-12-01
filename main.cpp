@@ -8,6 +8,7 @@
 #include "Solution.h"
 #include "Construction.h"
 #include "Pareto.h"
+#include "Movimiento.h"
 
 using namespace std;
 
@@ -38,6 +39,8 @@ int main(int argc, char **argv) {
   //Crea una nueva solución y un constructor 
   Solution* solucion ;//= new Solution(pi) ;
   Construction* construccion ;//= new Construction();
+  Movimiento* movimiento = new Movimiento();//se crea un movimiento
+
 
   //Creo frente de pareto
   auto fp = new Pareto();
@@ -46,22 +49,19 @@ int main(int argc, char **argv) {
     
     solucion = new Solution(pi) ;
 
-    solucion->ImprimirSolucion();
-
-    getchar();
-
     construccion = new Construction();
 
     construccion->ConstruirSolucionFact(solucion);
   
     fp->ModificarPareto(solucion);
 
+    movimiento->modificarSolucion(solucion);
+
     solucion->ImprimirSolucion();
 
     delete solucion ; 
     delete construccion;
 
-    getchar();
   }
 
   fp->imprimirPareto();

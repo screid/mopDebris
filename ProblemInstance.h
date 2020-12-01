@@ -54,6 +54,7 @@ class ProblemInstance{
     void agregarNodo(Node*);
     void modificarNodo(int indice, Node* nodo);
     Node* getUnNodo(int indice);
+    Node* getUnNodo2(long int ID);
     vector <Node*> getTodosNodos(void);
 
     void agregarDia(Day* dia);
@@ -90,23 +91,7 @@ class ProblemInstance{
     void setDeposito(Node*);
     Node* getDeposito(void);
 
-/* sami
-    void setDesdeDeposito(float);
-    void setHaciaDeposito(float);
-    
-    float getDesdeDeposito(long int idnodo);
-    float getHaciaDeposito(long int idnodo);
-*/
-
-/* franco
-    void setIda(float);
-    void setRegreso(float);
-
-    float getIda(int indice);
-    float getRegreso(int indice);
-*/
-
-    //Función para generar el número de la semilla
+   //Función para generar el número de la semilla
     int generarNAleat(int,int);
     
     void imprimirProblemInstance(void);

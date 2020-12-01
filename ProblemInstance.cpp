@@ -40,6 +40,15 @@ Node* ProblemInstance::getUnNodo(int indice){
   }
 }
 
+Node* ProblemInstance::getUnNodo2(long int ID){
+  for(Node* i: this->Nodos){
+    if (i->getIDnodo() == ID){
+      return i;
+    }
+  }
+  return nullptr;
+}
+
 vector <Node*> ProblemInstance::getTodosNodos(void){
   return this->Nodos;
 }

@@ -27,4 +27,11 @@ class Round{
     int getIDVuelta(void);
 
     void imprimirVuelta(void);
+
+    long int getIDNodo(void);
+    float getCargaRecogida(void);
+    float getTiempoVuelta(void);
+    Truck* getNombreCamion(void);
+    Day* getDiaVuelta(void);
+
 };

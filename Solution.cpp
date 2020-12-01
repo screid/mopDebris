@@ -131,6 +131,25 @@ int Solution::getCantVueltas(void){
   return this->Vueltas.size();
 }
 
+Round* Solution::getUnaVuelta(int indice){
+  return this->Vueltas.at(indice);
+}
+
+void Solution::EliminarVuelta(int posicion){
+  int i=0;
+  //cout << posicion << endl;
+  for (auto it=this->Vueltas.begin(); it != this->Vueltas.end(); it++){
+    if (i == posicion){
+      //cout << i << endl;
+      Round* temp = (*it) ;
+      this->Vueltas.erase(this->Vueltas.begin()+posicion);
+      delete temp;
+      return ;
+    }
+    i++;
+  }
+}
+
 void Solution::copiarSolucion(Solution *slt){
 
   //Copio los fi's

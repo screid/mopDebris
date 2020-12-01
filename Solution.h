@@ -45,6 +45,10 @@ class Solution{
     float getTDisponibleCamion(int camion, int dia);
 
     int getCantVueltas(void);
+    Round* getUnaVuelta(int indice);
+
+    void EliminarVuelta(int posicion);
+
 
     //Método para copiar una clase 
     void copiarSolucion(Solution *slt);
