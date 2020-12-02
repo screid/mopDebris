@@ -11,15 +11,6 @@ for (Node *n: this->ListaNodos){
   
 }
 
-//Colocar en clase utilities
-float Minimo(float a, float b){
-  if (a < b){
-    return a;
-  } else {
-    return b;
-  }
-}
-
 
 bool Construction::ConstruirSolucionFact(Solution *sol){
   bool debug = false;
@@ -53,7 +44,6 @@ bool Construction::ConstruirSolucionFact(Solution *sol){
   
   //Se guarda la cantidad escombros totales en el nodo 
   float EscDisponible = temp->getCantEsc();
-  int contV = 0; //Se inicia un contador de vueltas.
   for (int d=0 ; d < sol->getpi()->getCantDias() ; d++){
     if (debug) cout << "Día: " << d << endl ;
 
@@ -78,11 +68,11 @@ bool Construction::ConstruirSolucionFact(Solution *sol){
           //cout << Tdisponible << "-" << ((temp->getDesdeD() + temp->getHastaD()) / sol->getpi()->getVelocidad()) << "*" << sol->getpi()->getTiempoRetiroEsc() << endl ;
           //Se saca el minimo entre el tiempo disponible de camión y capacidad del camión)
           //cout << CargaFactible << endl ;
-          CargaFactible = Minimo(CargaFactible, sol->getpi()->getCapacidad());
+          CargaFactible = sol->Minimo(CargaFactible, sol->getpi()->getCapacidad());
           if (debug) cout << "El camión puede recoger:  " << CargaFactible << endl;
           
           //Se elige el minimo entre los escombros disponibles en el nodo vs capacidad del camión ya ocupada) 
-          float tempCarga = Minimo(EscDisponible,CargaFactible);
+          float tempCarga = sol->Minimo(EscDisponible,CargaFactible);
           if (debug) cout << "De acuerdo al camión y al nodo, se puede recoger:  " << tempCarga << endl;
           
           //Tiempo total de una vuelta (t. retiro escombros + t. desplazamiento)
@@ -93,7 +83,7 @@ bool Construction::ConstruirSolucionFact(Solution *sol){
           if (debug) cout << "F2: " << F2 << endl;
           
           //Se construye una vuelta
-          Round* tempVuelta = new Round(contV, temp->getIDnodo(), tempCarga, Tvuelta, sol->getpi()->getUnCamion(k), sol->getpi()->getUnDia(d)) ;
+          Round* tempVuelta = new Round(temp->getIDnodo(), tempCarga, Tvuelta, sol->getpi()->getUnCamion(k), sol->getpi()->getUnDia(d)) ;
           sol->setVuelta(tempVuelta);
 
           //guardar el escombro disponible en el nodo
@@ -137,11 +127,8 @@ bool Construction::ConstruirSolucionFact(Solution *sol){
           if (Tdisponible < 0.1){
               if (debug) cout << "Acá se acaba el tiempo" << endl;
               if (debug) getchar();
-              contV++ ;
               break;
           }
-          //Se aumeta el contador de las vueltas
-          contV++ ;
         }
         else{
             //Aunque le queda tiempo al camión, no alcanza a ir y volver al nodo analizado

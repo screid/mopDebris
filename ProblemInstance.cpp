@@ -73,26 +73,6 @@ vector <Day*> ProblemInstance::getTodosDias(void){
   return this->Dias;
 }
 
-void ProblemInstance::agregarVuelta(Round* vueltas){
-  this->Vueltas.push_back(vueltas);
-}
-
-void ProblemInstance::modificarVuelta(int indice, Round* vuelta){
-  this->Vueltas.at(indice) = vuelta;
-}
-
-Round* ProblemInstance::getUnaVuelta(int id){
-  for (Round* i: this->Vueltas){
-    if (i->getIDVuelta() == id){
-      return i;
-    }
-  }
-}
-
-vector <Round*> ProblemInstance::getTodosVueltas(void){
-  return this->Vueltas;
-}
-
 void ProblemInstance::setCapacidad(float Capacidad){
   this->Capacidad = Capacidad;
 }

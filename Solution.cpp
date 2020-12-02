@@ -1,4 +1,6 @@
 #include "Solution.h"
+#include <limits.h>
+#include <math.h>
 
 Solution::Solution(ProblemInstance* pi){
   this->pi = pi;
@@ -39,8 +41,12 @@ void Solution::setVuelta(Round* vuelta){
 
 void Solution::ImprimirSolucion(){
   
+  int vuelta = 0 ;
   for (Round* v: this->Vueltas){
+    cout << "vuelta: " << vuelta << endl ;
     v->imprimirVuelta();
+
+    vuelta++;
   } 
   cout << endl ;
   cout << "Objetivo 1: " << this->F1 << endl ;
@@ -88,8 +94,15 @@ void Solution::setF4(int F4){
 float Solution::getFo(int i){
   if (i == 0){
     return this->F1;
-  } else {
+  } 
+  if (i == 1){
     return this->F2;
+  }
+  if (i == 2){
+    return this->F3;
+  }
+  if (i == 3){
+    return this->F4;
   }
 }
 
@@ -184,4 +197,86 @@ void Solution::copiarSolucion(Solution *slt){
   //Copiar pi
   this->pi = slt->getpi();
 
+}
+
+int Solution::getSeleccionarCliente(){
+  
+  int nodo;
+  
+  do{
+    nodo = this->getpi()->generarNAleat(0,this->EscRemanente.size()-1); // seleccionamos un cliente con escombros disponible de forma aleatoria
+  } while (this->EscRemanente.at(nodo) <= 0);
+
+  return nodo;
+
+}
+
+int Solution::getSeleccionarCamionDia(){
+    int camion;
+
+    do{
+      camion = this->getpi()->generarNAleat(0,this->TDisponibleCamion.size()-1);
+      //cout << "camion: " << camion << endl;
+    } while (this->TDisponibleCamion.at(camion) <= 0);
+
+  return camion ;
+}
+
+int Solution::getCamionTdisponible(int camiondia){
+  return camiondia/this->getpi()->getCantDias();
+}
+
+int Solution::getDiaTdisponible(int camiondia){
+  return camiondia%this->getpi()->getCantDias();
+}
+
+//Colocar en clase utilities
+float Solution::Minimo(float a, float b){
+  if (a < b){
+    return a;
+  } else {
+    return b;
+  }
+}
+
+//Método para evaluar la función de evaluación para SA MultiObjetivo
+float Solution::probabilidadSolucionC(Solution *slt, int T, vector <float> Lambda){
+
+  int max = INT_MIN;
+
+  for (int i = 0; i < this->getpi()->getCantFO(); i++){
+    float calculo = Lambda.at(i)*(slt->getFo(i) - this->getFo(i))/ T;
+    if (calculo > max){
+      max = calculo;
+    }
+  }
+
+  max = exp(max);
+
+  if (max < 1){
+    return max;
+  } else {
+    return 1;
+  }
+
+}
+
+
+void Solution::generarLambda(vector <float> Lambda){
+
+  vector <float> numeros;
+  float aux = 0;      //Me guarda la suma de los numeros 
+
+  for (int i = 0; i < this->getpi()->getCantFO(); i++){
+    //Genero un número aleatorio entre 0 y 10 y lo entrego al vector
+    numeros.push_back(this->getpi()->generarNAleat(0, 10));
+    aux = aux + numeros.at(i);
+  }
+
+  //Le voy modificando el valor a lambda
+  for (int i = 0; i < this->getpi()->getCantFO(); i++){
+    Lambda.at(i) = numeros.at(i)/aux;
+    //cout << Lambda.at(i) << "\t";
+  }
+  //cout << endl;
 }

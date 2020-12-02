@@ -62,11 +62,6 @@ class ProblemInstance{
     Day* getUnDia(int id);
     vector <Day*> getTodosDias(void);
 
-    void agregarVuelta(Round* vuelta);
-    void modificarVuelta(int indice, Round* vuelta);
-    Round* getUnaVuelta(int id);
-    vector <Round*> getTodosVueltas(void);
-
     void setCantCamiones(int CantCamiones);
     void setCantNodos(int CantNodos);
     void setCantDias(int CantDias);

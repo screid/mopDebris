@@ -1,7 +1,6 @@
 #include "Round.h"
 
-Round::Round(int IDVuelta, long int IDNodo, float CargaRecogida, float TiempoVuelta, Truck* NombreCamion, Day* DiaVuelta){
-  this->IDVuelta = IDVuelta;
+Round::Round(long int IDNodo, float CargaRecogida, float TiempoVuelta, Truck* NombreCamion, Day* DiaVuelta){
   this->IDNodo = IDNodo;
   this->CargaRecogida = CargaRecogida;
   this->TiempoVuelta = TiempoVuelta;
@@ -10,7 +9,6 @@ Round::Round(int IDVuelta, long int IDNodo, float CargaRecogida, float TiempoVue
 }
 
 Round::Round(const Round &r2){
-  this->IDVuelta = r2.IDVuelta;
   this->IDNodo = r2.IDNodo;
   this->CargaRecogida = r2.CargaRecogida;
   this->TiempoVuelta = r2.TiempoVuelta;
@@ -18,13 +16,6 @@ Round::Round(const Round &r2){
   this->DiaVuelta = r2.DiaVuelta;
 }
 
-void Round::setIDVuelta(int IDVuelta){
-  this->IDVuelta = IDVuelta;
-}
-
-int Round::getIDVuelta(void){
-  return this->IDVuelta;
-}
 
 long int Round::getIDNodo(void){
   return this->IDNodo;
@@ -44,7 +35,6 @@ Day* Round::getDiaVuelta(void){
 
 /*void Round::imprimirVuelta(void){
   cout << "---------------^~^----------------" << endl;
-  cout << "Vuelta: " << this->IDVuelta << endl;
   cout << "Nodo: " << this->IDNodo << endl;
   cout << "Carga: " << this->CargaRecogida << endl;
   cout << "Tiempo: " << this->TiempoVuelta << endl;
@@ -54,7 +44,6 @@ Day* Round::getDiaVuelta(void){
 }*/
 
 void Round::imprimirVuelta(void){
-  cout << " V: " << this->IDVuelta;
   cout << " \tN: " << this->IDNodo;
   cout << " \tC: " << this->CargaRecogida;
   cout << " \tT: " << this->TiempoVuelta;

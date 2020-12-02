@@ -44,8 +44,14 @@ int main(int argc, char **argv) {
 
   //Creo frente de pareto
   auto fp = new Pareto();
+  Solution* solucionactual = new Solution(pi);
+  vector <float> Lambda(pi->getCantFO());     //Declaro el vector lambda
+  float T = 100;                           //Temperatura en valor alto
 
   for (int it_ext= 0; it_ext < atoi(argv[3]); it_ext++){
+
+    //Genero los numeros de lambda de manera aleatoria
+    solucion->generarLambda(Lambda);
     
     solucion = new Solution(pi) ;
 
@@ -55,7 +61,26 @@ int main(int argc, char **argv) {
   
     fp->ModificarPareto(solucion);
 
-    movimiento->modificarSolucion(solucion);
+    solucionactual->copiarSolucion(solucion);
+
+    for (int it_int= 0; it_int<20 ; it_int++){
+      movimiento->modificarSolucion(solucion);
+
+      //Reemplazo el valor si es mejor segun lo siguiente:
+      if (solucion->getpi()->generarNAleat(0, 10)/10.0 < solucionactual->probabilidadSolucionC(solucion,T,Lambda) ){
+        solucionactual->copiarSolucion(solucion);
+
+        //Se van agregando elementos al frente 
+        fp->ModificarPareto(solucionactual);
+      }
+    }
+
+    //Actualizar Temperatura:
+    T = 0.9*T;
+    //cout << "Temperatura:" << T << endl;
+    if (T < 1){
+      T = 100;
+    }
 
     solucion->ImprimirSolucion();
 

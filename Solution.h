@@ -49,9 +49,22 @@ class Solution{
 
     void EliminarVuelta(int posicion);
 
+    int getSeleccionarCliente(void);
+    int getSeleccionarCamionDia(void);
+
+    int getCamionTdisponible(int camiondia);
+    int getDiaTdisponible(int camiondia);
+
+    float Minimo(float a, float b);
 
     //Método para copiar una clase 
     void copiarSolucion(Solution *slt);
+
+    //Método para evaluar la función de evaluación para SA MultiObjetivo
+    float probabilidadSolucionC(Solution *slt, int T, vector <float> Lambda);
+
+    //Función para generar valores para lambda
+    void generarLambda(vector <float> Lambda);
 
     void ImprimirSolucion(void);
 };

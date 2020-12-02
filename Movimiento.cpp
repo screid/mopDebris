@@ -1,6 +1,5 @@
 #include "Movimiento.h"
 
-
 bool Movimiento::modificarSolucion(Solution *sol){
 
   //eliminar getCantVueltas
@@ -26,10 +25,20 @@ bool Movimiento::modificarSolucion(Solution *sol){
     camion = EliminarV->getNombreCamion()->getIDCamion();
     dia = EliminarV->getDiaVuelta()->getIDDia();
 
+    // si antes de eliminar la vuelta la cant de escombros remante era casi cero significa que el nodo se consideraba limpio completo
+    if (sol->getEscRemanente(cliente) < 0.1){
+      sol->setF1(sol->getF1()-1*sol->getpi()->getUnDia(dia)->getPrefDia()*sol->getpi()->getUnNodo(cliente)->getPrefNodo());
+
+      //se actualizan las otras cosas
+      sol->setF3(sol->getF3()-1);
+      sol->setF4(sol->getF4()-sol->getpi()->getUnNodo(cliente)->getPrefNodo());
+    }
+
     sol->setEscRemanente(cliente, sol->getEscRemanente(cliente)+EliminarV->getCargaRecogida()); //le regresamos los escombros recogidos en esa vuelta al cliente  
     
     sol->setTDisponibleCamion(camion, dia, EliminarV->getTiempoVuelta()+ sol->getTDisponibleCamion(camion,dia));//le regresamos el tiempo disponible al camion en el dia correspondiente
 
+    sol->setF2(sol->getF2()-EliminarV->getCargaRecogida()*sol->getpi()->getUnDia(dia)->getPrefDia());
 
     sol->EliminarVuelta(indice);
 
@@ -37,69 +46,85 @@ bool Movimiento::modificarSolucion(Solution *sol){
     getchar();
   }
 
-  //actualizar escombros remanente
+  int intentos = 0, maxintentos = 6 ;
+  int camiondia;
+  float Tdisponible ;
+  float EscDisponible;
 
-  //seleccionar aleatorioamente un cliente al que le queden escombros
+  bool debug = false ;
 
-  //crear la vuelta
+  while (intentos < maxintentos){
+    cliente = sol->getSeleccionarCliente(); // se seleciona un cliente
+
+    Node* temp = sol->getpi()->getUnNodo(cliente) ;
+
+    // se selecciona un camion en un deteminado dia
+    camiondia = sol->getSeleccionarCamionDia();
+    camion = sol->getCamionTdisponible(camiondia);
+    dia = sol->getDiaTdisponible(camiondia);
+
+    if (debug){
+      cout << "cliente:" << cliente << ", camion: " << camion << ", dia: " << dia << endl;
+    }
+
+    Tdisponible = sol->getTDisponibleCamion(camion,dia) ;
+    EscDisponible = sol->getEscRemanente(cliente);
+
+    if (Tdisponible > (temp->getDesdeD() + temp->getHastaD()) / sol->getpi()->getVelocidad()){
+
+      if (debug){
+        cout << "cliente:" << cliente << ", camion: " << camion << ", dia: " << dia << endl;
+      }
+      
+      float CargaFactible = ( Tdisponible - ((temp->getDesdeD() + temp->getHastaD()) / sol->getpi()->getVelocidad())) * sol->getpi()->getTiempoRetiroEsc() ;
+          
+        //cout << Tdisponible << "-" << ((temp->getDesdeD() + temp->getHastaD()) / sol->getpi()->getVelocidad()) << "*" << sol->getpi()->getTiempoRetiroEsc() << endl ;
+        //Se saca el minimo entre el tiempo disponible de camión y capacidad del camión)
+        //cout << CargaFactible << endl ;
+        CargaFactible = sol->Minimo(CargaFactible, sol->getpi()->getCapacidad());
+        if (debug) cout << "El camión puede recoger:  " << CargaFactible << endl;
+        
+        //Se elige el minimo entre los escombros disponibles en el nodo vs capacidad del camión ya ocupada) 
+        float tempCarga = sol->Minimo(EscDisponible,CargaFactible);
+        if (debug) cout << "De acuerdo al camión y al nodo, se puede recoger:  " << tempCarga << endl;
+        
+        //Tiempo total de una vuelta (t. retiro escombros + t. desplazamiento)
+        float Tvuelta = (temp->getDesdeD() + temp->getHastaD()) / sol->getpi()->getVelocidad() + tempCarga * sol->getpi()->getTiempoRetiroEsc();
+        if (debug) cout << "Tvuelta: " << Tvuelta << endl;
+        
+        sol->setF2(sol->getF2()+tempCarga * sol->getpi()->getUnDia(dia)->getPrefDia());
+        if (debug) cout << "F2: " << sol->getF2() << endl;
+        
+        //Se construye una vuelta
+        Round* tempVuelta = new Round( temp->getIDnodo(), tempCarga, Tvuelta, sol->getpi()->getUnCamion(camion), sol->getpi()->getUnDia(dia)) ;
+        sol->setVuelta(tempVuelta);
+  
+        //guardar el escombro disponible en el nodo
+        sol->setEscRemanente(temp->getPosNodo(),sol->getEscRemanente(temp->getPosNodo())-tempCarga);
+
+        // si antes de eliminar la vuelta la cant de escombros remante era casi cero significa que el nodo se consideraba limpio completo
+        if (sol->getEscRemanente(cliente) < 0.1){
+          sol->setF1(sol->getF1()-1*sol->getpi()->getUnDia(dia)->getPrefDia()*sol->getpi()->getUnNodo(cliente)->getPrefNodo());
+
+          //se actualizan las otras cosas
+          sol->setF3(sol->getF3()-1);
+          sol->setF4(sol->getF4()-sol->getpi()->getUnNodo(cliente)->getPrefNodo());
+        }
+
+        sol->setTDisponibleCamion(camion,dia,sol->getTDisponibleCamion(camion,dia)-Tvuelta);
+
+        if (debug) tempVuelta->imprimirVuelta();
+
+
+    }
+    sol->ImprimirSolucion();
+    getchar();
+    intentos++;
+  }
+
 
   //agregar vuelta al listado
 
   //actualizar escombros remanentes
   
-  
-  
-  
-  
-  
-  
-  /*
-  
-  
-  //cout << "Indice: " << indice << endl;
-  
-  sol->modificarObj(indice, 1-sol->getrepS(indice));
-
-  //Verificamos si excede la capacidad de la mochila
-  int peso_nuevo = sol->getpesoTotal();
-
-  //Calculo del nuevo peso de la mochila 
-  if (sol->getrepS(indice) == 1){
-    //Significa que se agrego un objeto, por lo tanto se le suma el valor del peso:
-    peso_nuevo = peso_nuevo + sol->getpi()->getObjetos(indice)->getPeso();
-  }
-  //Aquí se elimina un objeto de la mochila 
-  else{
-    peso_nuevo = peso_nuevo - sol->getpi()->getObjetos(indice)->getPeso(); 
-  }
-
-  //Verificamos si la solución es factible o no:
-  if ( peso_nuevo <= sol->getpi()->getCapacidad() ){
-    //cout << "Modificación factible" <<endl;
-    
-    //Aquí se actualiza el peso con el peso nuevo 
-    sol->setpesoTotal(peso_nuevo);
-
-    //Tengo que modificar las funciones objetivos.
-    //Recorro todas las funciones objetivos
-    for (int j = 0; j < sol->getpi()->getCantFO(); j++){
-      
-      if (sol->getrepS(indice) == 1){
-        sol->modificarfo(j, sol->getfo(j) + sol->getpi()->getObjetos(indice)->getValor(j) );
-      }
-      else {
-        sol->modificarfo(j, sol->getfo(j) - sol->getpi()->getObjetos(indice)->getValor(j) );
-      }
-    }
-    return true;
-  }
-  else {
-    //cout << "Modificación infactible" <<endl;
-    //Vuelve al valor original
-    sol->modificarObj(indice, 1-sol->getrepS(indice));
-
-    return false;
-
-  }
-  */
 }

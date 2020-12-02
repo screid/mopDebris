@@ -9,7 +9,6 @@ using namespace std;
 
 class Round{
   private:
-    int IDVuelta;
     long int IDNodo;
     float CargaRecogida;
     float TiempoVuelta;
@@ -18,14 +17,10 @@ class Round{
 
   public:
 
-    Round(int IDVuelta, long int IDNodo, float CargaRecogida, float TiempoVuelta, Truck* NombreCamion, Day* DiaVuelta);
+    Round(long int IDNodo, float CargaRecogida, float TiempoVuelta, Truck* NombreCamion, Day* DiaVuelta);
     Round(const Round &r2);
     ~Round(){};
-
-    void setIDVuelta(int IDVuelta);
     
-    int getIDVuelta(void);
-
     void imprimirVuelta(void);
 
     long int getIDNodo(void);
