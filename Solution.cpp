@@ -132,7 +132,9 @@ void Solution::setEscRemanente(int posicion, float cantidad){
 
 
 float Solution::getTDisponibleCamion(int camion, int dia){
-  return this->TDisponibleCamion.at( camion*this->getpi()->getCantDias()+dia );
+  int pos =  camion*this->getpi()->getCantDias()+dia;
+//   cout << "**camiondia: " << pos <<  ", camion: " << camion << ", dia: " << dia << endl;
+  return this->TDisponibleCamion.at(pos);
 }
 
 void Solution::setTDisponibleCamion(int camion, int dia, float cantidad){
@@ -205,7 +207,7 @@ int Solution::getSeleccionarCliente(){
   
   do{
     nodo = this->getpi()->generarNAleat(0,this->EscRemanente.size()-1); // seleccionamos un cliente con escombros disponible de forma aleatoria
-  } while (this->EscRemanente.at(nodo) <= 0);
+  } while (this->EscRemanente.at(nodo) <= 0.1);
 
   return nodo;
 
@@ -216,7 +218,6 @@ int Solution::getSeleccionarCamionDia(){
 
     do{
       camion = this->getpi()->generarNAleat(0,this->TDisponibleCamion.size()-1);
-      //cout << "camion: " << camion << endl;
     } while (this->TDisponibleCamion.at(camion) <= 0);
 
   return camion ;

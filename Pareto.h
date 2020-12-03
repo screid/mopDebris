@@ -20,6 +20,9 @@ class Pareto{
     //Función dominancia
     int Dominancia(Solution* sol1, Solution* sol2);
 
+    //Detectar soluciones iguales
+    bool Iguales(Solution* sol1, Solution* sol2);
+    
     //Función para modificar las soluciones al frente.
     void ModificarPareto(Solution* sol);
 

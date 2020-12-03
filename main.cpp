@@ -44,17 +44,19 @@ int main(int argc, char **argv) {
 
   //Creo frente de pareto
   auto fp = new Pareto();
-  Solution* solucionactual = new Solution(pi);
+  Solution* solucionactual;
+  cout << "pi->getCantFO(): " <<  pi->getCantFO() << endl;
+  
   vector <float> Lambda(pi->getCantFO());     //Declaro el vector lambda
   float T = 100;                           //Temperatura en valor alto
 
   for (int it_ext= 0; it_ext < atoi(argv[3]); it_ext++){
-
+          
+    solucion = new Solution(pi) ;
+    solucionactual = new Solution(pi) ;
     //Genero los numeros de lambda de manera aleatoria
     solucion->generarLambda(Lambda);
     
-    solucion = new Solution(pi) ;
-
     construccion = new Construction();
 
     construccion->ConstruirSolucionFact(solucion);
@@ -63,7 +65,7 @@ int main(int argc, char **argv) {
 
     solucionactual->copiarSolucion(solucion);
 
-    for (int it_int= 0; it_int<20 ; it_int++){
+    for (int it_int= 0; it_int<2000 ; it_int++){
       movimiento->modificarSolucion(solucion);
 
       //Reemplazo el valor si es mejor segun lo siguiente:

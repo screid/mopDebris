@@ -30,6 +30,19 @@ int Pareto::Dominancia(Solution* sol1, Solution* sol2){
 }
 
 
+bool Pareto::Iguales(Solution* sol1, Solution* sol2){
+
+  //Recorro cada valor objetivo 
+  for (int i = 0; i < sol1->getpi()->getCantFO() ; i++ ) {
+    if (sol1->getFo(i) != sol2->getFo(i)){
+      return false;
+    }
+  }
+  return true;
+
+}
+
+
 //Función para modificar las soluciones al frente.
 void Pareto::ModificarPareto(Solution* sol){
 
@@ -52,6 +65,10 @@ void Pareto::ModificarPareto(Solution* sol){
   while (it != this->Soluciones.end() )  {
     //Una especie de casteo raro (accedo al contenido de lo apuntado por el iterador)
     Solution* s = *it;
+    
+    if(Iguales(s, sol)){ //Descatar las soluciones iguales
+        return;
+    }
     
     //Si s domina a solución nueva, se va solucion nueva
     if (Dominancia(s, sol) == 1){
