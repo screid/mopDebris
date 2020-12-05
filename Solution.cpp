@@ -75,6 +75,82 @@ void Solution::ImprimirSolucion(){
   }
 }
 
+
+void Solution::RevisarSolucion(){
+    return;
+    float F1=0.0, F2=0.0, F3=0.0, F4=0.0;
+    int diatermino;
+    vector <float> Escombros; 
+    for (Node *n: this->getpi()->getTodosNodos()){
+        Escombros.push_back(n->getCantEsc());
+    }
+        
+    for (Round* v: this->Vueltas){
+        int pos = this->getpi()->getUnNodo2(v->getIDNodo())->getPosNodo();
+        Escombros.at(pos) -= v->getCargaRecogida();
+        if(Escombros.at(pos) < -1){
+            cout << "ERROR: Se recoge más cantidad de la disponible en el nodo " << v->getIDNodo() << endl;
+            cout << "Escombros.at(pos):  " << Escombros.at(pos) << endl; 
+            getchar();
+        }
+        
+        if(Escombros.at(pos) < 0.1){
+            diatermino = this->getDiaTermino(v->getIDNodo());
+            F1 += this->getpi()->getUnNodo2(v->getIDNodo())->getPrefNodo() * this->getpi()->getUnDia(diatermino)->getPrefDia();
+            F3 ++;
+            F4 += this->getpi()->getUnNodo2(v->getIDNodo())->getPrefNodo();  
+        }
+        F2 += v->getCargaRecogida()*v->getDiaVuelta()->getPrefDia(); 
+    
+    }
+    
+    if(abs(F1 - this->F1) > 0.1){
+        cout << "ERROR: El Objetivo 1 no corresponde! " << endl;
+        cout << F1 << " vs " << this->F1 << endl;
+        getchar();
+    }
+    
+    if(abs(F2 - this->F2) > 0.1){
+        cout << "ERROR: El Objetivo 2 no corresponde! " << endl;
+        cout << F2 << " vs " << this->F2 << endl;
+        getchar();
+    }
+    
+    if(F3 != this->F3){
+        cout << "ERROR: El Objetivo 3 no corresponde! " << endl;
+        cout << F3 << " vs " << this->F3 << endl;
+        getchar();
+    }
+    
+    if(F4 != this->F4){
+        cout << "ERROR: El Objetivo 4 no corresponde! " << endl;
+        cout << F4 << " vs " << this->F4 << endl;
+    }
+
+/*
+    int h = 0 ;
+    for (float i: this->EscRemanente){
+        cout << h << "  " << this->getpi()->getUnNodo(h)->getIDnodo() << "  " << i << endl ;
+        h ++;
+    }
+    
+    h = 0 ;
+    int d = 0 ;
+    for (float i: this->TDisponibleCamion){
+    
+        cout << this->getpi()->getUnCamion(h)->getIDCamion() << " " << d << " " << i << endl ;
+    
+        d++;
+    
+        if (d % this->getpi()->getCantDias() == 0){
+        h++;
+        d=0;
+        }
+    }*/
+}
+    
+
+
 void Solution::setF1(float F1){
   this->F1 = F1;
 }
@@ -191,11 +267,21 @@ void Solution::copiarSolucion(Solution *slt){
   this->EscRemanente.shrink_to_fit();
   this->EscRemanente.clear();
 
+  
   for (float i: slt->EscRemanente){
     int copia = i ;
     this-> EscRemanente.push_back(copia) ;
   }
+  
+  //copiar los tiempos disponibles de los camiones
+  this->TDisponibleCamion.shrink_to_fit();
+  this->TDisponibleCamion.clear();
 
+  for (float i: slt->TDisponibleCamion){
+    int copia = i ;
+    this-> TDisponibleCamion.push_back(copia) ;
+  }
+  
   //Copiar pi
   this->pi = slt->getpi();
 
@@ -207,7 +293,7 @@ int Solution::getSeleccionarCliente(){
   
   do{
     nodo = this->getpi()->generarNAleat(0,this->EscRemanente.size()-1); // seleccionamos un cliente con escombros disponible de forma aleatoria
-  } while (this->EscRemanente.at(nodo) <= 0.1);
+  } while (this->EscRemanente.at(nodo) < 5);
 
   return nodo;
 
@@ -239,6 +325,18 @@ float Solution::Minimo(float a, float b){
     return b;
   }
 }
+
+int Solution::getDiaTermino(long int cliente){
+    int day = 0;
+    for(Round * r: this->Vueltas){
+        if(r->getIDNodo() == cliente){
+            if (r->getDiaVuelta()->getIDDia() > day)
+                day = r->getDiaVuelta()->getIDDia();
+        }
+    }
+    return day;
+}
+
 
 //Método para evaluar la función de evaluación para SA MultiObjetivo
 float Solution::probabilidadSolucionC(Solution *slt, int T, vector <float> Lambda){

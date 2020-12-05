@@ -45,29 +45,42 @@ int main(int argc, char **argv) {
   //Creo frente de pareto
   auto fp = new Pareto();
   Solution* solucionactual;
-  cout << "pi->getCantFO(): " <<  pi->getCantFO() << endl;
   
   vector <float> Lambda(pi->getCantFO());     //Declaro el vector lambda
   float T = 100;                           //Temperatura en valor alto
-
+  bool debug = false;
+  
   for (int it_ext= 0; it_ext < atoi(argv[3]); it_ext++){
-          
+    if (debug) cout << "It_ext -------------------------------------------------------> " << it_ext << endl;
+    
     solucion = new Solution(pi) ;
+    
     solucionactual = new Solution(pi) ;
+    
+    if (debug && it_ext == 1) solucion->ImprimirSolucion();
+    if (debug && it_ext == 1) solucionactual->ImprimirSolucion();
+    
     //Genero los numeros de lambda de manera aleatoria
     solucion->generarLambda(Lambda);
     
     construccion = new Construction();
-
     construccion->ConstruirSolucionFact(solucion);
-  
+    if (debug) cout << "CONSTRUCCION" << endl;
+    solucion->RevisarSolucion();
+    
+    
     fp->ModificarPareto(solucion);
 
     solucionactual->copiarSolucion(solucion);
+    
+    if (debug && it_ext == 1) solucionactual->ImprimirSolucion();
 
     for (int it_int= 0; it_int<2000 ; it_int++){
+      if (debug) cout << "It_int -------------------------------------------------------> " << it_int << endl;
+      
       movimiento->modificarSolucion(solucion);
-
+      if (debug) cout << "MOVIMIENTO" << endl;
+      solucion->RevisarSolucion();
       //Reemplazo el valor si es mejor segun lo siguiente:
       if (solucion->getpi()->generarNAleat(0, 10)/10.0 < solucionactual->probabilidadSolucionC(solucion,T,Lambda) ){
         solucionactual->copiarSolucion(solucion);
@@ -84,9 +97,10 @@ int main(int argc, char **argv) {
       T = 100;
     }
 
-    solucion->ImprimirSolucion();
+    //solucion->ImprimirSolucion();
 
     delete solucion ; 
+    delete solucionactual;
     delete construccion;
 
   }

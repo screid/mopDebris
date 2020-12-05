@@ -12,30 +12,27 @@ bool Movimiento::modificarSolucion(Solution *sol){
   bool debug = false;
 
   if (debug) sol->ImprimirSolucion();
-  if (debug) getchar();
+  //if (debug) getchar();
 
   for (int i=0 ; i<veces ; i++){
     if (debug) cout << "I: " << i << endl;
     indice = sol->getpi()->generarNAleat(0, sol->getCantVueltas()-1); //escoger vuelta aleatoria
 
     Round* EliminarV = sol->getUnaVuelta(indice); //tomamos la vuelta escogida
-    if (debug) cout <<"-----------------------------"<< endl;
+    if (debug) cout <<"----------------------------------------------------------------"<< endl;
     if (debug) EliminarV->imprimirVuelta();
-    if (debug) cout <<"-----------------------------"<< endl;
+    if (debug) cout <<"-----------------------------------------------------------------"<< endl;
 
     cliente = sol->getpi()->getUnNodo2(EliminarV->getIDNodo())->getPosNodo(); //nodo al que se le cambian las cosas
     camion = EliminarV->getNombreCamion()->getIDCamion();
     dia = EliminarV->getDiaVuelta()->getIDDia();
 
     // si antes de eliminar la vuelta la cant de escombros remante era casi cero significa que el nodo se consideraba limpio completo
-    if (sol->getEscRemanente(cliente) < 0.1){
-      sol->setF1(sol->getF1() - sol->getpi()->getUnDia(dia)->getPrefDia()*sol->getpi()->getUnNodo(cliente)->getPrefNodo());
-//       if(sol->getF1() < 0){
-//           EliminarV->imprimirVuelta();
-//           sol->ImprimirSolucion();
-//           getchar();
-//           
-//     }
+    if (sol->getEscRemanente(cliente) < 0.01){      
+      
+      int diatermino = sol->getDiaTermino(EliminarV->getIDNodo()); //Se debe bucar el día de la última recoleccion para actualizar las FO (especialmente la preferencia asociada a ese día)
+      
+      sol->setF1(sol->getF1() - sol->getpi()->getUnDia(diatermino)->getPrefDia()*sol->getpi()->getUnNodo(cliente)->getPrefNodo());
 
       //se actualizan las otras cosas
       sol->setF3(sol->getF3() - 1);
@@ -51,7 +48,7 @@ bool Movimiento::modificarSolucion(Solution *sol){
     sol->EliminarVuelta(indice);
 
     if (debug) sol->ImprimirSolucion();
-    if (debug) getchar();
+    if (debug) sol->RevisarSolucion();
   }
 
   int intentos = 0, maxintentos = 6 ;
@@ -88,16 +85,16 @@ bool Movimiento::modificarSolucion(Solution *sol){
         if (debug) cout << "El camión puede recoger:  " << CargaFactible << endl;
         
         //Se elige el minimo entre los escombros disponibles en el nodo vs capacidad del camión ya ocupada) 
-        float tempCarga = sol->Minimo(EscDisponible,CargaFactible);
+        float tempCarga = sol->Minimo(EscDisponible, CargaFactible);
         if (debug) cout << "De acuerdo al camión y al nodo, se puede recoger:  " << tempCarga << endl;
         
-        if(tempCarga > 0.1) {
+        if(tempCarga > 0.01) {
         
             //Tiempo total de una vuelta (t. retiro escombros + t. desplazamiento)
             float Tvuelta = (temp->getDesdeD() + temp->getHastaD()) / sol->getpi()->getVelocidad() + tempCarga * sol->getpi()->getTiempoRetiroEsc();
             if (debug) cout << "Tvuelta: " << Tvuelta << endl;
         
-            sol->setF2(sol->getF2()+tempCarga * sol->getpi()->getUnDia(dia)->getPrefDia());
+            sol->setF2(sol->getF2() + tempCarga * sol->getpi()->getUnDia(dia)->getPrefDia());
             if (debug) cout << "F2: " << sol->getF2() << endl;
         
             //Se construye una vuelta
@@ -108,8 +105,11 @@ bool Movimiento::modificarSolucion(Solution *sol){
             sol->setEscRemanente(temp->getPosNodo(), sol->getEscRemanente(temp->getPosNodo()) - tempCarga);
 
 //             // si al eliminar la vuelta la cant de escombros remante es casi cero significa que el nodo se consideraba limpio completo
-            if (sol->getEscRemanente(cliente) < 0.1){
-                sol->setF1(sol->getF1() + sol->getpi()->getUnDia(dia)->getPrefDia()*sol->getpi()->getUnNodo(cliente)->getPrefNodo());
+            if (sol->getEscRemanente(cliente) <= 0.01){
+                int diatermino = sol->getDiaTermino(temp->getIDnodo()); //Se debe bucar el día de la última recoleccion para actualizar las FO (especialmente la preferencia asociada a ese día)
+                if (diatermino < dia)
+                    diatermino = dia;
+                sol->setF1(sol->getF1() + sol->getpi()->getUnDia(diatermino)->getPrefDia()*sol->getpi()->getUnNodo(cliente)->getPrefNodo());
 
                 //se actualizan las otras cosas
                 sol->setF3(sol->getF3() + 1);
@@ -124,7 +124,7 @@ bool Movimiento::modificarSolucion(Solution *sol){
 
     }
     if (debug) sol->ImprimirSolucion();
-    if (debug) getchar();
+    //if (debug) getchar();
     intentos++;
   }
 

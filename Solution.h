@@ -54,6 +54,8 @@ class Solution{
 
     int getCamionTdisponible(int camiondia);
     int getDiaTdisponible(int camiondia);
+    
+    int getDiaTermino(long int cliente);
 
     float Minimo(float a, float b);
 
@@ -67,4 +69,5 @@ class Solution{
     void generarLambda(vector <float> Lambda);
 
     void ImprimirSolucion(void);
+    void RevisarSolucion(void);
 };

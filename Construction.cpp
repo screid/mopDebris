@@ -31,8 +31,6 @@ bool Construction::ConstruirSolucionFact(Solution *sol){
 
   //Se ordenan los nodos según al preferencia del día 
   sort(this->ListaNodos.begin(), this->ListaNodos.end(), OrdenarCarga) ;
-
-  sol->getpi()->imprimirProblemInstance();
   
   //partimos desde el nodo con mayor preferencia
 
@@ -103,6 +101,7 @@ bool Construction::ConstruirSolucionFact(Solution *sol){
 
           //Si ya no quedan escombros disponibles, paso al siguiente nodo
           if (EscDisponible < 0.1){
+                sol->setEscRemanente(temp->getPosNodo(), 0.0);
                 F1 += temp->getPrefNodo() * sol->getpi()->getUnDia(d)->getPrefDia() ;
                 F3++ ;
                 F4 += temp->getPrefNodo();
@@ -125,6 +124,7 @@ bool Construction::ConstruirSolucionFact(Solution *sol){
           }
           
           if (Tdisponible < 0.1){
+              sol->setTDisponibleCamion(k, d, 0.0);
               if (debug) cout << "Acá se acaba el tiempo" << endl;
               if (debug) getchar();
               break;
