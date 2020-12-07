@@ -47,7 +47,7 @@ int main(int argc, char **argv) {
   Solution* solucionactual;
   
   vector <float> Lambda(pi->getCantFO());     //Declaro el vector lambda
-  float T = 100;                           //Temperatura en valor alto
+  float T = atoi(argv[5]);                           //Temperatura en valor alto
   bool debug = false;
   
   for (int it_ext= 0; it_ext < atoi(argv[3]); it_ext++){
@@ -75,7 +75,7 @@ int main(int argc, char **argv) {
     
     if (debug && it_ext == 1) solucionactual->ImprimirSolucion();
 
-    for (int it_int= 0; it_int<2000 ; it_int++){
+    for (int it_int= 0; it_int<atoi(argv[4]) ; it_int++){
       if (debug) cout << "It_int -------------------------------------------------------> " << it_int << endl;
       
       movimiento->modificarSolucion(solucion);
@@ -91,10 +91,10 @@ int main(int argc, char **argv) {
     }
 
     //Actualizar Temperatura:
-    T = 0.9*T;
+    T = atof(argv[6])*T;
     //cout << "Temperatura:" << T << endl;
     if (T < 1){
-      T = 100;
+      T = atoi(argv[5]);
     }
 
     //solucion->ImprimirSolucion();
