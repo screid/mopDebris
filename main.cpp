@@ -36,11 +36,13 @@ int main(int argc, char **argv) {
   //Método para imprimir todo resumido y bonito
   // pi-> imprimirProblemInstance();
 
+  //Inicio el reloj
+  t_inicial = clock();
+
   //Crea una nueva solución y un constructor 
   Solution* solucion ;//= new Solution(pi) ;
   Construction* construccion ;//= new Construction();
   Movimiento* movimiento = new Movimiento();//se crea un movimiento
-
 
   //Creo frente de pareto
   auto fp = new Pareto();
@@ -54,7 +56,6 @@ int main(int argc, char **argv) {
     if (debug) cout << "It_ext -------------------------------------------------------> " << it_ext << endl;
     
     solucion = new Solution(pi) ;
-    
     solucionactual = new Solution(pi) ;
     
     if (debug && it_ext == 1) solucion->ImprimirSolucion();
@@ -67,7 +68,6 @@ int main(int argc, char **argv) {
     construccion->ConstruirSolucionFact(solucion);
     if (debug) cout << "CONSTRUCCION" << endl;
     solucion->RevisarSolucion();
-    
     
     fp->ModificarPareto(solucion);
 
@@ -96,18 +96,25 @@ int main(int argc, char **argv) {
     if (T < 1){
       T = atoi(argv[5]);
     }
-
+    
     //solucion->ImprimirSolucion();
 
     delete solucion ; 
     delete solucionactual;
     delete construccion;
-
   }
 
-  fp->imprimirPareto();
+  //calcular tiempo de ejecucion
+  t_final = clock();
+  clock_t timeToBest = ((double) (t_final - t_inicial)) / CLOCKS_PER_SEC;
+  cout << endl << "Tiempo de ejecución: " << timeToBest << endl << endl;
+
+  fp->imprimirPareto(); cout << endl ;
 
   //imprimir solución 
   //solucion->ImprimirSolucion();
 
+  string nombre = "Solucion.txt";
+  
+  fp->imprimirParetoaArchivo(nombre, timeToBest);
 }

@@ -112,13 +112,16 @@ void Pareto::imprimirPareto(){
 }
 
 
-void Pareto::imprimirParetoaArchivo(string nombre){
+void Pareto::imprimirParetoaArchivo(string nombre, double tiempo){
 
   ofstream archivo(nombre, ios::out);
+
+  archivo << "Tiempo ejecucion: " << tiempo << endl;
 
   int aux = 0;  //Contaodr auxiliar
 
   for (Solution* i: this->Soluciones){
+    archivo << aux ;
     for (int j = 0; j < i->getpi()->getCantFO(); j++){
       archivo << "\t" << i->getFo(j);
     } 

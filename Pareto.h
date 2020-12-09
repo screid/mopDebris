@@ -30,6 +30,6 @@ class Pareto{
     void imprimirPareto();
 
     //Para imprimir un archivo 
-    void imprimirParetoaArchivo(string nombre);
+    void imprimirParetoaArchivo(string nombre, double tiempo);
 
 };
