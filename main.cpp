@@ -34,7 +34,7 @@ int main(int argc, char **argv) {
   ProblemInstance* pi = fh.readInputFile();
 
   //Método para imprimir todo resumido y bonito
-  // pi-> imprimirProblemInstance();
+  //pi-> imprimirProblemInstance();
 
   //Inicio el reloj
   t_inicial = clock();
@@ -53,6 +53,9 @@ int main(int argc, char **argv) {
   bool debug = false;
   
   for (int it_ext= 0; it_ext < atoi(argv[3]); it_ext++){
+    
+    //cout << "aqui" << endl ;
+    
     if (debug) cout << "It_ext -------------------------------------------------------> " << it_ext << endl;
     
     solucion = new Solution(pi) ;
@@ -76,10 +79,16 @@ int main(int argc, char **argv) {
     if (debug && it_ext == 1) solucionactual->ImprimirSolucion();
 
     for (int it_int= 0; it_int<atoi(argv[4]) ; it_int++){
+      
+      //cout << "aca" << endl ;
+      
       if (debug) cout << "It_int -------------------------------------------------------> " << it_int << endl;
       
       movimiento->modificarSolucion(solucion);
       if (debug) cout << "MOVIMIENTO" << endl;
+
+      //cout << "mas aca" << endl ;
+
       solucion->RevisarSolucion();
       //Reemplazo el valor si es mejor segun lo siguiente:
       if (solucion->getpi()->generarNAleat(0, 10)/10.0 < solucionactual->probabilidadSolucionC(solucion,T,Lambda) ){
