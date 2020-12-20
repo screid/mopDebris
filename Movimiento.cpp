@@ -11,11 +11,12 @@ bool Movimiento::modificarSolucion(Solution *sol){
   
   bool debug = false;
 
+  if (debug) cout << "\nSolucion Inicial" << endl;
   if (debug) sol->ImprimirSolucion();
   //if (debug) getchar();
 
   for (int i=0 ; i<veces ; i++){
-    if (debug) cout << "I: " << i << endl;
+    if (debug) cout << "\nI: " << i << endl;
     indice = sol->getpi()->generarNAleat(0, sol->getCantVueltas()-1); //escoger vuelta aleatoria
 
     Round* EliminarV = sol->getUnaVuelta(indice); //tomamos la vuelta escogida
@@ -57,7 +58,12 @@ bool Movimiento::modificarSolucion(Solution *sol){
   float EscDisponible;
 
   while (intentos < maxintentos){
+    if (debug) cout << "\nA: " << intentos << endl;
+    
     cliente = sol->getSeleccionarCliente(); // se seleciona un cliente
+    if (cliente == sol->getpi()->getCantNodos() ){//se elimina el deposito
+      break; //se deja de intentar de agregar una vuelta a la solucion
+    }
 
     Node* temp = sol->getpi()->getUnNodo(cliente) ;
 

@@ -32,4 +32,6 @@ class Pareto{
     //Para imprimir un archivo 
     void imprimirParetoaArchivo(string nombre, double tiempo);
 
+    //Función para imprimir frente
+    void imprimirTodoPareto();
 };

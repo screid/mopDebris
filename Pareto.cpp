@@ -111,6 +111,12 @@ void Pareto::imprimirPareto(){
   }
 }
 
+void Pareto::imprimirTodoPareto(){
+  for (Solution* i: this->Soluciones){
+    i->ImprimirSolucion();
+  }
+}
+
 
 void Pareto::imprimirParetoaArchivo(string nombre, double tiempo){
 

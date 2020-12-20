@@ -290,10 +290,15 @@ void Solution::copiarSolucion(Solution *slt){
 int Solution::getSeleccionarCliente(){
   
   int nodo;
+  int i = 0 ;
   
   do{
     nodo = this->getpi()->generarNAleat(0,this->EscRemanente.size()-1); // seleccionamos un cliente con escombros disponible de forma aleatoria
-  } while (this->EscRemanente.at(nodo) < 5);
+    i++;
+    if ((i > this->EscRemanente.size()*2)){
+      return this->EscRemanente.size() ; // señal para inidicar que no queda escombro disponible en un nodo
+    }
+  } while ((this->EscRemanente.at(nodo) < 0.1));
 
   return nodo;
 

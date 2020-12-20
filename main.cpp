@@ -124,6 +124,8 @@ int main(int argc, char **argv) {
   //solucion->ImprimirSolucion();
 
   string nombre = "Solucion.txt";
+
+  fp->imprimirTodoPareto();
   
   fp->imprimirParetoaArchivo(nombre, timeToBest);
 }
