@@ -22,7 +22,7 @@ exe:
 	./MOPDebris Instancias/instancia4.txt 13 1000 1000 100 0.9
 
 exe1:
-	./MOPDebris Experimentos/Instancia1_N10_K3_D4_Depot1.txt 13 100 100 100 0.9
+	./MOPDebris Archivostxt/Instancia96_N82_K3_D2_Depot4.txt 13 1000 10000 100 0.9
   
 clean: 
 	rm -rf *.o MOPDebris
