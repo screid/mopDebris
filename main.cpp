@@ -43,13 +43,15 @@ int main(int argc, char **argv) {
   Solution* solucion ;//= new Solution(pi) ;
   Construction* construccion ;//= new Construction();
   Movimiento* movimiento = new Movimiento();//se crea un movimiento
+  int VE = atof(argv[7]); //vueltas a eliminar en cada movimientos
+  int VA = atof(argv[8]); //intentos para agregar vuentas en cada movimiento
 
   //Creo frente de pareto
   auto fp = new Pareto();
   Solution* solucionactual;
   
   vector <float> Lambda(pi->getCantFO());     //Declaro el vector lambda
-  float T = atoi(argv[5]);                           //Temperatura en valor alto
+  float T = atoi(argv[5]);                    //Temperatura en valor alto
   bool debug = false;
   
   for (int it_ext= 0; it_ext < atoi(argv[3]); it_ext++){
@@ -84,7 +86,7 @@ int main(int argc, char **argv) {
       
       if (debug) cout << "It_int -------------------------------------------------------> " << it_int << endl;
       
-      movimiento->modificarSolucion(solucion);
+      movimiento->modificarSolucion(solucion, VE, VA);
       if (debug) cout << "MOVIMIENTO" << endl;
 
       //cout << "mas aca" << endl ;

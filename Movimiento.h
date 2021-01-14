@@ -13,6 +13,6 @@ class Movimiento{
     ~Movimiento(){};
 
     //Para hacer el movimiento 
-    bool modificarSolucion(Solution *sol);
+    bool modificarSolucion(Solution *sol, int eliminarvueltas, int agregarvueltas);
 
 };

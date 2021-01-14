@@ -1,9 +1,9 @@
 #include "Movimiento.h"
 
-bool Movimiento::modificarSolucion(Solution *sol){
+bool Movimiento::modificarSolucion(Solution *sol, int eliminarvueltas, int agregarvueltas){
 
   //eliminar getCantVueltas
-  int veces = 2;
+  int veces = eliminarvueltas;
   int indice ;
   int cliente;
   int camion;
@@ -52,7 +52,10 @@ bool Movimiento::modificarSolucion(Solution *sol){
     if (debug) sol->RevisarSolucion();
   }
 
-  int intentos = 0, maxintentos = 6 ;
+
+
+
+  int intentos = 0, maxintentos = agregarvueltas ;
   int camiondia;
   float Tdisponible ;
   float EscDisponible;

@@ -1,5 +1,101 @@
-KP_p-3_n-10_ins-1.txt 10000 10000 10000
-KP_p-3_n-50_ins-1.txt 10000 10000 10000
-KP_p-4_n-10_ins-1.txt 10000 10000 10000 10000
-KP_p-5_n-10_ins-1.txt 10000 10000 10000 10000 10000
+#KP_p-3_n-10_ins-1.txt 10000 10000 10000
+#KP_p-3_n-50_ins-1.txt 10000 10000 10000
+#KP_p-4_n-10_ins-1.txt 10000 10000 10000 10000
+#KP_p-5_n-10_ins-1.txt 10000 10000 10000 10000 10000
 
+Instancia1_N10_K2_D2_Depot1.txt	12,000	197,593
+Instancia2_N10_K2_D1_Depot1.txt	16,000	159,939
+Instancia3_N10_K1_D4_Depot1.txt	13,000	179,780
+Instancia4_N10_K2_D1_Depot2.txt	14,000	151,809
+Instancia5_N10_K1_D3_Depot2.txt	16,667	152,075
+Instancia6_N10_K1_D1_Depot2.txt	9,000	80,000
+Instancia7_N10_K2_D1_Depot3.txt	12,000	167,469
+Instancia8_N10_K1_D2_Depot3.txt	17,000	122,455
+Instancia9_N10_K2_D1_Depot3.txt	12,000	158,749
+Instancia10_N10_K1_D3_Depot4.txt	11,667	163,557
+Instancia11_N10_K1_D1_Depot4.txt	11,000	84,413
+Instancia12_N10_K1_D3_Depot4.txt	16,667	156,036
+Instancia13_N20_K1_D4_Depot1.txt	26,750	280,344
+Instancia14_N20_K1_D2_Depot1.txt	14,000	169,446
+Instancia15_N20_K1_D4_Depot1.txt	20,750	278,747
+Instancia16_N20_K2_D1_Depot2.txt	28,000	232,336
+Instancia17_N20_K3_D1_Depot2.txt	32,000	338,730
+Instancia18_N20_K1_D3_Depot2.txt	19,667	227,273
+Instancia19_N20_K2_D1_Depot3.txt	32,000	237,930
+Instancia20_N20_K3_D1_Depot3.txt	29,000	326,691
+Instancia21_N20_K3_D1_Depot3.txt	25,000	336,498
+Instancia22_N20_K3_D1_Depot4.txt	39,000	289,079
+Instancia23_N20_K1_D2_Depot4.txt	21,000	179,614
+Instancia24_N20_K1_D1_Depot4.txt	13,000	120,000
+Instancia25_N30_K2_D1_Depot1.txt	25,000	240,000
+Instancia26_N30_K1_D2_Depot1.txt	29,000	180,000
+Instancia27_N30_K1_D5_Depot1.txt	36,200	359,317
+Instancia28_N30_K3_D1_Depot2.txt	39,000	360,000
+Instancia29_N30_K1_D3_Depot2.txt	20,667	239,980
+Instancia30_N30_K2_D1_Depot2.txt	30,000	240,000
+Instancia31_N30_K1_D1_Depot3.txt	23,000	120,000
+Instancia32_N30_K2_D2_Depot3.txt	35,000	359,976
+Instancia33_N30_K1_D2_Depot3.txt	24,000	180,000
+Instancia34_N30_K1_D3_Depot4.txt	28,000	240,000
+Instancia35_N30_K1_D3_Depot4.txt	32,667	240,000
+Instancia36_N30_K2_D2_Depot4.txt	35,500	359,976
+Instancia37_N45_K3_D1_Depot1.txt	47,000	360,000
+Instancia38_N45_K2_D1_Depot1.txt	36,000	240,000
+Instancia39_N45_K2_D2_Depot1.txt	42,000	360,000
+Instancia40_N45_K2_D1_Depot2.txt	41,000	240,000
+Instancia41_N45_K2_D1_Depot2.txt	34,000	240,000
+Instancia42_N45_K2_D1_Depot2.txt	36,000	240,000
+Instancia43_N45_K1_D4_Depot3.txt	32,750	300,000
+Instancia44_N45_K2_D2_Depot3.txt	37,000	360,000
+Instancia45_N45_K2_D1_Depot3.txt	39,000	240,000
+Instancia46_N45_K1_D3_Depot4.txt	29,000	240,000
+Instancia47_N45_K2_D1_Depot4.txt	29,000	240,000
+Instancia48_N45_K2_D2_Depot4.txt	43,500	359,976
+Instancia49_N55_K2_D2_Depot1.txt	48,000	359,970
+Instancia50_N55_K2_D2_Depot1.txt	44,500	360,000
+Instancia51_N55_K1_D5_Depot1.txt	45,000	359,976
+Instancia52_N55_K2_D2_Depot2.txt	46,000	360,000
+Instancia53_N55_K1_D5_Depot2.txt	40,200	360,000
+Instancia54_N55_K2_D2_Depot2.txt	45,500	359,970
+Instancia55_N55_K1_D4_Depot3.txt	42,250	300,000
+Instancia56_N55_K2_D2_Depot3.txt	45,000	360,000
+Instancia57_N55_K1_D4_Depot3.txt	40,000	299,976
+Instancia58_N55_K2_D2_Depot4.txt	51,000	359,970
+Instancia59_N55_K2_D2_Depot4.txt	45,500	360,000
+Instancia60_N55_K2_D2_Depot4.txt	45,500	360,000
+Instancia61_N65_K1_D7_Depot1.txt	58,714	479,957
+Instancia62_N65_K2_D2_Depot1.txt	55,000	359,970
+Instancia63_N65_K2_D2_Depot1.txt	54,500	359,970
+Instancia64_N65_K1_D4_Depot2.txt	44,250	299,976
+Instancia65_N65_K2_D1_Depot2.txt	44,000	240,000
+Instancia66_N65_K2_D1_Depot2.txt	42,000	240,000
+Instancia67_N65_K2_D2_Depot3.txt	50,000	359,976
+Instancia68_N65_K2_D1_Depot3.txt	44,000	240,000
+Instancia69_N65_K1_D5_Depot3.txt	50,600	360,000
+Instancia70_N65_K1_D6_Depot4.txt	50,000	419,984
+Instancia71_N65_K1_D6_Depot4.txt	53,167	419,992
+Instancia72_N65_K3_D2_Depot4.txt	63,000	539,970
+Instancia73_N75_K1_D7_Depot1.txt	60,000	479,965
+Instancia74_N75_K3_D2_Depot1.txt	65,000	539,951
+Instancia75_N75_K2_D3_Depot1.txt	60,000	480,000
+Instancia76_N75_K1_D6_Depot2.txt	57,000	419,961
+Instancia77_N75_K2_D2_Depot2.txt	55,000	360,000
+Instancia78_N75_K2_D2_Depot2.txt	55,000	359,970
+Instancia79_N75_K1_D6_Depot3.txt	54,833	420,000
+Instancia80_N75_K2_D2_Depot3.txt	55,000	359,970
+Instancia81_N75_K2_D2_Depot3.txt	54,500	360,000
+Instancia82_N75_K2_D3_Depot4.txt	61,333	479,959
+Instancia83_N75_K2_D2_Depot4.txt	52,500	359,976
+Instancia84_N75_K1_D7_Depot4.txt	61,000	480,000
+Instancia85_N82_K1_D9_Depot1.txt	69,444	600,000
+Instancia86_N82_K2_D4_Depot1.txt	71,250	600,000
+Instancia87_N82_K1_D8_Depot1.txt	65,875	540,000
+Instancia88_N82_K3_D2_Depot2.txt	68,500	540,000
+Instancia89_N82_K1_D7_Depot2.txt	62,000	480,000
+Instancia90_N82_K3_D2_Depot2.txt	68,500	540,000
+Instancia91_N82_K3_D2_Depot3.txt	68,500	540,000
+Instancia92_N82_K2_D3_Depot3.txt	64,000	480,000
+Instancia93_N82_K1_D6_Depot3.txt	57,833	420,000
+Instancia94_N82_K2_D2_Depot4.txt	55,500	359,976
+Instancia95_N82_K1_D7_Depot4.txt	62,000	480,000
+Instancia96_N82_K2_D3_Depot4.txt	64,000	480,000

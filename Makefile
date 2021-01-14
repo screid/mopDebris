@@ -16,13 +16,21 @@ MOPDebris: $(OBJS)
 
 #Para que me lea el archivo de las instancias 
 
-# nombreAlgoritmo nombreArchivo semilla itExt itInt
+# nombre Algoritmo 
+# nombre Archivo 
+# semilla 
+# iteraciones externas 
+# iteraciones internas
+# temperatira inicial
+# factor de enfriamiento
+# vueltas a eliminar en una solucion
+# cantidad de intentos para agregar vueltas en una solucion
 
 exe:
 	./MOPDebris Instancias/instancia4.txt 13 1000 1000 100 0.9
 
 exe1:
-	./MOPDebris Experimentos/Instancia96_N82_K3_D2_Depot4.txt 13 1000 10000 100 0.9
+	./MOPDebris Experimentos/Instancia1_N10_K2_D2_Depot1.txt 13 100 1000 100 0.9 2 6
   
 clean: 
 	rm -rf *.o MOPDebris
