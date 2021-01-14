@@ -22,7 +22,7 @@ class FileHandler{
   public:
     //Método constructor
     FileHandler(string instanceFilename): instanceFilename(instanceFilename) {};
-    ~FileHandler() { cout<< "Eliminando FileHandler" << endl; }
+    ~FileHandler() {} //cout<< "Eliminando FileHandler" << endl; }
 
     //Función que lee cositas
     ProblemInstance* readInputFile();
